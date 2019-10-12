@@ -1,0 +1,77 @@
+{
+  "name": "frontend-test",
+  "version": "1.0.0",
+  "description": "Superformula frontend test.",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && ava",
+    "dev": "parcel ./static/index.html -p 3000",
+    "build": "parcel build ./static/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elijahboston/frontend-test.git"
+  },
+  "author": "Elijah Boston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elijahboston/frontend-test/issues"
+  },
+  "homepage": "https://github.com/elijahboston/frontend-test#readme",
+  "dependencies": {
+    "core-js": "^3.2.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "styled-jsx": "^3.2.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "acorn": "^7.1.0",
+    "ava": "^2.4.0",
+    "babel-eslint": "^10.0.3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "eslint-config-xo-react": "^0.20.0",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "esm": "^3.2.25",
+    "parcel-bundler": "^1.12.4",
+    "xo": "^0.25.3"
+  },
+  "browserslist": "> 0.25%, not dead",
+  "xo": {
+    "prettier": true,
+    "fix": true,
+    "global": [
+      "document"
+    ],
+    "extends": "xo-react",
+    "parser": "babel-eslint",
+    "plugins": [
+      "react",
+      "ava"
+    ]
+  },
+  "babel": {
+    "plugins": [
+      "styled-jsx/babel"
+    ],
+    "presets": [
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "entry",
+          "corejs": 3
+        }
+      ]
+    ]
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  }
+}
