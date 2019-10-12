@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/elijahboston/frontend-test#readme",
   "dependencies": {
-    "core-js": "^3.2.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "styled-jsx": "^3.2.2"
@@ -28,9 +27,11 @@
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "@babel/register": "^7.6.2",
     "acorn": "^7.1.0",
     "ava": "^2.4.0",
     "babel-eslint": "^10.0.3",
+    "browser-env": "^3.2.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint-config-xo-react": "^0.20.0",
@@ -70,8 +71,11 @@
     ]
   },
   "ava": {
+    "verbose": true,
     "require": [
-      "esm"
+      "esm",
+      "@babel/register",
+      "./src/test-helpers/_setup-browser-env.js"
     ]
   }
 }
