@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CenterContent from '../center-content';
-import GridItem from './grid-item';
 
-const Grid = ({ items }) =>
+const Grid = ({ children }) =>
   <CenterContent>
     <div className='grid'>
-        {items.map(item => <GridItem key={item.id} { ...item } isOpen={item.is_open} />)}
+        {children}
     </div>
     <style jsx>{`
       .grid {
@@ -20,11 +19,11 @@ const Grid = ({ items }) =>
   </CenterContent>;
 
 Grid.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object)
+  children: PropTypes.any
 }
 
 Grid.defaultProps = {
-  items: []
+  children: null
 }
 
 export default Grid;
