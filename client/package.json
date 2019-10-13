@@ -21,6 +21,7 @@
   "homepage": "https://github.com/elijahboston/frontend-test#readme",
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "@storybook/addon-knobs": "^5.2.3",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
