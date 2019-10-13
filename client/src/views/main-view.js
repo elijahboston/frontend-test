@@ -1,16 +1,17 @@
 import React from 'react';
-import { Header, Filter, CenterContent, Grid } from '../components';
-
-const title = 'Resturaunts';
-const description = `Lorem ipsum dolor sit amet, consectetur adipiscing \
-                    elit, sed do eiusmod tempor incididunt ut labore et \
-                    dolore magna aliqua.`;
+import { Header, Filter, Grid } from '../components';
+import { mockTitle, mockDescription, gridItemData } from '../test-helpers/_mock-data';
 
 const MainView = () =>
   <main>
-    <Header title={title} description={description} />
+    <Header title={mockTitle} description={mockDescription} />
     <Filter />
-    <Grid />
+    <Grid items={[
+        { id: 0, ... gridItemData},
+        { id: 1, ... gridItemData},
+        { id: 2, ... gridItemData},
+        { id: 3, ... gridItemData}
+      ]} />
   </main>;
 
 export default MainView;

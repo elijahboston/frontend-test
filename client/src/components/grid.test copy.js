@@ -11,5 +11,6 @@ configure({ adapter: new Adapter() });
 
 test('Grid component renders with items', t => {
     const wrapper = shallow(<Grid items={[gridItemData, gridItemData]}/>);
+
     t.true(wrapper.find(GridItem).length === 2);
 });
