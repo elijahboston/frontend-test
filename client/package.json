@@ -6,7 +6,8 @@
   "scripts": {
     "test": "xo && ava",
     "dev": "parcel ./static/index.html -p 3000",
-    "build": "parcel build ./static/index.html"
+    "build": "parcel build ./static/index.html",
+    "storybook": "start-storybook"
   },
   "repository": {
     "type": "git",
@@ -30,9 +31,11 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "@babel/register": "^7.6.2",
+    "@storybook/react": "^5.2.3",
     "acorn": "^7.1.0",
     "ava": "^2.4.0",
     "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
     "browser-env": "^3.2.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
