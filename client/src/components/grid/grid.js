@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CenterContent from './center-content';
+import CenterContent from '../center-content';
 import GridItem from './grid-item';
 
 const Grid = ({ items }) =>

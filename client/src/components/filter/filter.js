@@ -1,24 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import CenterContent from './center-content';
-
-const FilterSection = ({ children }) =>
-  <div className='filter-section'>
-    {children}
-    <style jsx>{`
-      .filter-section {
-        display: flex;
-      }
-    `}</style>
-  </div>;
-
-FilterSection.propTypes = {
-  children: PropTypes.any
-};
-
-FilterSection.defaultProps = {
-  children: null
-}
+import CenterContent from '../center-content';
+import FilterSection from './filter-section';
 
 const Filter = () =>
   <CenterContent>

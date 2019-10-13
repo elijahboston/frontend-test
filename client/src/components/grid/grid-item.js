@@ -14,10 +14,12 @@ const Photo = ({ name, url }) =>
   </div>;
 
 Photo.propTypes = {
+  name: PropTypes.string,
   url: PropTypes.string
 }
 
 Photo.defaultProps = {
+  name: '',
   url: ''
 }
 

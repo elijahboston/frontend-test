@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import Grid from './grid';
 import GridItem from './grid-item';
-import { gridItemData } from '../test-helpers/_mock-data';
+import { gridItemData } from '../../test-helpers/_mock-data';
 
 configure({ adapter: new Adapter() });
 
