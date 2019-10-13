@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DetailView = () =>
+const DetailView = ({ slug }) =>
   <main>
     <h1>Detail View</h1>
   </main>;

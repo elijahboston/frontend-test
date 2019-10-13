@@ -5,7 +5,7 @@ const App = () =>
   <div>
     <Router>
       <MainView path="/" />
-      <DetailView path="/details" />
+      <DetailView path="/:slug" />
     </Router>
     <style jsx global>{`
       body {
