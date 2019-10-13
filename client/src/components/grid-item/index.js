@@ -6,23 +6,24 @@ import Photo from './photo';
 import Details from './details';
 
 const GridItem = ({ name, alias, photos, rating, price, isClosed, categories }) =>
-  <div className='item'>
+  <li className='item'>
     <Photo name={name} url={photos[0]} />
-    <span className='name'>{name}</span>
+    
+    <h4 className='name'>{name}</h4>
+    
     <Rating score={rating} />
     <Details price={price} isClosed={isClosed} category={categories[0]} />
+
     <div className='learn-more'>
       <Link to={`/${alias}`}>Learn More</Link>
     </div>
     <style jsx>{`
-      .item {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 19rem;
+      .name {
+        font-weight: bold;
+        margin: .5rem 0;
       }
     `}</style>
-  </div>;
+  </li>;
 
 GridItem.propTypes = {
   name: PropTypes.string,

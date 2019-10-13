@@ -5,15 +5,18 @@ import CenterContent from '../center-content';
 const Grid = ({ children }) =>
   <CenterContent>
     <div className='grid'>
-        {children}
+        <ul>{children}</ul>
     </div>
     <style jsx>{`
-      .grid {
+      .grid > ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
         display: grid;
-        grid-template-columns: repeat(4, auto [col-start]);
-        grid-template-rows: 22rem;
-        grid-column-gap: 1rem;
-        grid-row-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+        grid-template-rows: repeat(2, 25rem);
+        grid-gap: 1rem;
+        grid-auto-flow: dense;
       }
     `}</style>
   </CenterContent>;
