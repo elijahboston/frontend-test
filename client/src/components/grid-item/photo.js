@@ -3,11 +3,15 @@ import PropTypes from 'prop-types';
 
 const Photo = ({ name, url }) =>
   <div className='photo'>
-    <img src={url} alt={name} />
+    <figure alt={name} />
     <style jsx>{`
-      .photo img {
-        max-width: 100%;
-        height: auto;
+      .photo figure {
+        overflow: hidden;
+        height: 0;
+        margin: 0;
+        padding-top: 70%;
+        background: url(${url});
+        background-size: cover;
       }
     `}</style>
   </div>;
