@@ -7,6 +7,12 @@ const App = () =>
       <MainView path="/" />
       <DetailView path="/details" />
     </Router>
+    <style jsx global>{`
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    `}</style>
   </div>;
 
     

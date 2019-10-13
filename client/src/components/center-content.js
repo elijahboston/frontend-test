@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // CenterContent helps us handle keeping out main content areas
-// centered and applying any horizontal padding.
+// centered and horizontal margins consistent
 const CenterContent = ({ children }) =>
   <div className='center-content'>
     <div className='container'>

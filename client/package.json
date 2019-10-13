@@ -20,6 +20,7 @@
   "homepage": "https://github.com/elijahboston/frontend-test#readme",
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "styled-jsx": "^3.2.2"
