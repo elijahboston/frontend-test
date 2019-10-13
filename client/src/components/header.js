@@ -16,7 +16,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  title: 'Resturants',
+  title: 'Restaurants',
   description: 'Some text'
 };
 
