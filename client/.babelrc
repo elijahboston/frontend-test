@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "styled-jsx/babel"
+  ],
+  "presets": [
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": 2
+      }
+    ]
+  ]
+}
