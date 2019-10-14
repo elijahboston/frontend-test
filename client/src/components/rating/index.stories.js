@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+import { withKnobs, number } from '@storybook/addon-knobs';
 import Rating from '.';
 
 const stories = storiesOf('Rating', module);
@@ -13,7 +13,7 @@ const options = {
    range: true,
    min: 0,
    max: 5,
-   step: 1,
+   step: .5,
 };
 const groupId = 'SCORE-ID1';
 
