@@ -39,6 +39,7 @@
     "ava": "^2.4.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-inline-svg": "^1.0.1",
     "browser-env": "^3.2.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
@@ -65,7 +66,8 @@
   },
   "babel": {
     "plugins": [
-      "styled-jsx/babel"
+      "styled-jsx/babel",
+      "inline-svg"
     ],
     "presets": [
       "@babel/preset-react",
