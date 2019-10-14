@@ -1,15 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Header, Filter, Grid, GridItem } from '../components';
-import { mockTitle, mockDescription, gridItemData } from '../test-helpers/_mock-data';
+import { mockTitle, mockDescription } from '../test-helpers/_mock-data';
 
-const items = [
-  { id: 0, ...gridItemData },
-  { id: 1, ...gridItemData },
-  { id: 2, ...gridItemData },
-  { id: 3, ...gridItemData }
-];
-
-const MainView = () =>
+const MainView = ({ items }) =>
   <main>
     <Header title={mockTitle} description={mockDescription} />
     <Filter />
@@ -18,5 +12,13 @@ const MainView = () =>
       {items.map(item => <GridItem key={item.id} { ...item } isOpen={item.is_open} />)}
     </Grid>
   </main>;
+
+MainView.propTypes = {
+  items: PropTypes.array
+};
+
+MainView.defaultProps = {
+  items: []
+};
 
 export default MainView;
