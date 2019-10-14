@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "xo && ava",
-    "dev": "parcel ./static/index.html -p 3000",
-    "build": "parcel build ./static/index.html",
+    "dev": "webpack-dev-server --config config/webpack.config.js",
+    "build:dev": "webpack --config config/webpack.config.js",
     "storybook": "start-storybook"
   },
   "repository": {
@@ -22,7 +22,6 @@
   "dependencies": {
     "@reach/router": "^1.2.1",
     "@storybook/addon-knobs": "^5.2.3",
-    "parcel-plugin-inlinesvg": "^0.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
@@ -47,7 +46,10 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
     "esm": "^3.2.25",
-    "parcel-bundler": "^1.12.4",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2",
     "xo": "^0.25.3"
   },
   "browserslist": "> 0.25%, not dead",
@@ -62,22 +64,6 @@
     "plugins": [
       "react",
       "ava"
-    ]
-  },
-  "babel": {
-    "plugins": [
-      "styled-jsx/babel",
-      "inline-svg"
-    ],
-    "presets": [
-      "@babel/preset-react",
-      [
-        "@babel/preset-env",
-        {
-          "useBuiltIns": "entry",
-          "corejs": 2
-        }
-      ]
     ]
   },
   "ava": {
