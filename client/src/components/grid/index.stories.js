@@ -1,20 +1,25 @@
 import React from 'react';
-import Grid from '.';
+import { storiesOf } from '@storybook/react';
+import { withKnobs, number } from '@storybook/addon-knobs';
 import { buildGrid } from '../../test-helpers/_helpers';
+import Grid from '.';
 
-export default { title: 'Grid' };
+const stories = storiesOf('Grid', module);
 
-export const withOneItem = () =>
+stories.addDecorator(withKnobs);
+
+const label = 'Items';
+const defaultValue = 8;
+const options = {
+   range: true,
+   min: 1,
+   max: 8,
+   step: 1,
+};
+const groupId = 'SCORE-ID1';
+
+stories.add('Default', () => (
   <Grid>
-    {buildGrid(1)}
-  </Grid>;
-
-export const withFourItems = () =>
-  <Grid>
-    {buildGrid(4)}
-  </Grid>;
-
-export const withEightItems = () =>
-  <Grid>
-    {buildGrid(8)}
-  </Grid>;
+    {buildGrid(number(label, defaultValue, options, groupId))}
+  </Grid>
+));
