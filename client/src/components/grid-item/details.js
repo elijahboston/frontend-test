@@ -17,13 +17,15 @@ const Details = ({ category, price, isClosed }) =>
   </div>;
 
 Details.propTypes = {
-  category: PropTypes.string,
+  category: PropTypes.object,
   price: PropTypes.string,
   isClosed: PropTypes.bool
 }
 
 Details.defaultProps = {
-  category: '',
+  category: {
+    title: ''
+  },
   price: '$',
   isClosed: false
 }
