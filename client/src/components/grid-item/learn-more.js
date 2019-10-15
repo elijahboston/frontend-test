@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import css from 'styled-jsx/css';
+import ThemeContext from '../../theme-context';
 
 // Using styled-jsx's resolve method to
 // generate CSS that will be applied to the
@@ -13,17 +14,22 @@ const { className, styles } = css.resolve`
     display: block;
     padding: .8rem .5rem;
     font-size: .8rem;
-    color: #fff;
-    background-color: #002B56;
     text-transform: uppercase;
     font-weight: lighter;
   }
 `;
 
 const LearnMore = ({ to }) => {
+  const theme = useContext(ThemeContext);
+
+  // Insert backgroundColor via style property since
+  // we need context
   return (
     <React.Fragment>
-      <Link to={to} className={className}>
+      <Link to={to} className={className} style={{
+        backgroundColor: theme.primary,
+        color: theme.buttonText
+      }}>
         Learn More
       </Link>
       {styles}
