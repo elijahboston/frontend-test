@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import { MainView, DetailView } from './views'
 
 const App = () =>
-  <div>
+  <div className='app'>
     <Router>
       <MainView path="/" />
       <DetailView path="/:slug" />

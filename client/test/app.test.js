@@ -9,5 +9,5 @@ import App from '../src/app';
 
 test('should render without errors', t => {
     const wrapper = shallow(<App />,);
-    t.is(wrapper.find(<main />).html(), 1);
+    t.is(wrapper.find('.app').length, 1);
 });
