@@ -47,23 +47,27 @@
     "eslint-plugin-react-hooks": "^2.1.2",
     "esm": "^3.2.25",
     "html-webpack-plugin": "^3.2.0",
+    "require-hacker": "^3.0.1",
     "webpack": "^4.41.1",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2",
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2",
     "xo": "^0.25.3"
   },
   "browserslist": "> 0.25%, not dead",
   "xo": {
+    "env": "mocha",
     "prettier": true,
     "fix": true,
     "global": [
-      "document"
+      "document",
+      "expect"
     ],
     "extends": "xo-react",
     "parser": "babel-eslint",
     "plugins": [
-      "react",
-      "ava"
+      "react"
     ]
   },
   "ava": {
@@ -71,7 +75,8 @@
     "require": [
       "esm",
       "@babel/register",
-      "./src/test-helpers/_setup-browser-env.js"
+      "./test/helpers/_ignore-files.js",
+      "./test/helpers/_setup-browser-env.js"
     ]
   }
 }
