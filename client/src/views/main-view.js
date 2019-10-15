@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Header, Filter, Grid, GridItem } from '../components';
-import { mockTitle, mockDescription } from '../test-helpers/_mock-data';
+import { mockTitle, mockDescription } from '../storybook-helpers/_mock-data';
 
 const MainView = ({ items }) =>
   <main>
