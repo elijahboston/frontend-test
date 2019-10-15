@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import OpenNow from '../open-now';
 
 const Details = ({ category, price, isClosed }) =>
   <div className='details'>
@@ -12,8 +13,23 @@ const Details = ({ category, price, isClosed }) =>
       </span>
     </div>
     <div className='right'>
-      {isClosed ? 'Closed' : 'Open'}
+      <OpenNow isClosed={isClosed} />
     </div>
+    <style jsx>{`
+      .details {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: space-between;
+        font-size: .8rem;
+        text-transform: uppercase;
+        color: #757575;
+      }
+
+      .price:before {
+        content: '•';
+        margin: 0 .5rem;
+      }
+    `}</style>
   </div>;
 
 Details.propTypes = {
