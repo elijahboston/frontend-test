@@ -1,5 +1,6 @@
 import React from 'react';
 import CenterContent from '../center-content';
+import Button from '../button';
 import FilterSection from './filter-section';
 
 const Filter = () =>
@@ -29,13 +30,18 @@ const Filter = () =>
         </form>
       </div>
       <div className='clear-filter'>
-        <button type='button'>Clear All</button>
+        <Button>Clear All</Button>
       </div>
       <style jsx>{`
         .filter {
           display: flex;
           width: 100%;
+          align-items: center;
           justify-content: space-between;
+          padding: 1rem 0;
+          border-top: 1px solid #ccc;
+          border-bottom: 1px solid #ccc;
+          margin-bottom: 1rem;
         }
 
         .filter-options {
