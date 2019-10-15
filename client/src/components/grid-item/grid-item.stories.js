@@ -1,6 +1,6 @@
 import React from 'react';
 import GridItem from '.';
-import { gridItemData } from '../../test-helpers/_mock-data';
+import { gridItemData } from '../../storybook-helpers/_mock-data';
 
 export default { title: 'Grid Item' };
 

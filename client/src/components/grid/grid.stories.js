@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, number } from '@storybook/addon-knobs';
 import { buildGrid } from '../../storybook-helpers/_helpers';
-import Grid from '.';
+import Grid from './grid';
 
 const stories = storiesOf('Grid', module);
 
