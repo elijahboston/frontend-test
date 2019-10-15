@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from '@reach/router';
 import Rating from '../rating';
 import Photo from './photo';
 import Details from './details';
+import LearnMore from './learn-more';
 
 const GridItem = ({ name, alias, photos, rating, price, isClosed, categories }) =>
   <li className='item'>
@@ -13,10 +13,8 @@ const GridItem = ({ name, alias, photos, rating, price, isClosed, categories }) 
     
     <Rating score={rating} />
     <Details price={price} isClosed={isClosed} category={categories[0]} />
+    <LearnMore to={alias} />
 
-    <div className='learn-more'>
-      <Link to={`/${alias}`}>Learn More</Link>
-    </div>
     <style jsx>{`
       .name {
         font-weight: bold;
