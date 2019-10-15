@@ -17,6 +17,6 @@ const options = {
 };
 const groupId = 'SCORE-ID1';
 
-stories.add('With score', () => (
+stories.add('Default', () => (
   <Rating score={number(label, defaultValue, options, groupId)} />
 ));
