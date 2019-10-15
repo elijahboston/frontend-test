@@ -10,3 +10,12 @@ export const buildGrid = (n) => {
 
   return items
 }
+
+export const mockGridItems = (n) => {
+  const items = [];
+  while (n > items.length) {
+    items.push({ id: items.length, ...gridItemData });
+  }
+
+  return items
+}
