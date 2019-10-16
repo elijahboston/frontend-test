@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import ThemeContext from '../../theme-context';
+import ThemeContext from '../../contexts/theme-context';
 
-const Button = ({ children, clickHandler }) => {
+const Button = ({ children, onClick }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <button className='button' onClick={clickHandler}>
+    <button className='button' onClick={onClick}>
       {children}
       <style jsx>{`
         .button {
