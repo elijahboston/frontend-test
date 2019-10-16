@@ -8,6 +8,7 @@ const stories = storiesOf('Filter', module);
 stories.addDecorator(withKnobs);
 
 const filterOptions = [
+  { label: 'All', value: 'All' },
   { label: '$', value: '$' },
   { label: '$$', value: '$$' },
   { label: '$$$', value: '$$$' },
