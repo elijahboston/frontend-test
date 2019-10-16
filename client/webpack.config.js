@@ -1,21 +1,22 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  context: path.resolve(__dirname, '../src'),
-  entry: './index.js',
+  entry: {
+    index: './src/index.js'
+  },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, './dist'),
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Yelp App',
-      template: 'static/index.html'
+      template: './public/index.html'
     })
   ],
   module: {
+    // React JS/JSX
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -24,6 +25,7 @@ module.exports = {
           loader: 'babel-loader'
         }
       },
+      // SVG
       {
         test: /\.svg$/,
         use: [
@@ -37,10 +39,5 @@ module.exports = {
         }],
       }
     ]
-  },
-  devServer: {
-    contentBase: path.join(__dirname, '../dist'),
-    compress: true,
-    port: 3000
   }
 };
