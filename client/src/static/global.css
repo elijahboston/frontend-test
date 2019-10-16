@@ -3,3 +3,7 @@ body {
   margin: 0;
   font-family: 'Helvetica Neue', san-serif;
 }
+
+h1, h2 {
+  font-weight: lighter;
+}

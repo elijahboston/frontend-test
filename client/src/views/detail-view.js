@@ -49,11 +49,6 @@ const DetailView = ({ slug }) =>
     </CenterContent>
     <DetailHero address={'123 Fake St'} />
     <Reviews items={items} />
-    <style jsx>{`
-      h1 {
-        font-weight: lighter;
-      }
-    `}</style>
   </main>;
 
 DetailView.propTypes = {

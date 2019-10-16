@@ -7,11 +7,6 @@ const Header = ({ title, description }) =>
     <CenterContent>
       <h1>{title}</h1>
       <p>{description}</p>
-      <style jsx>{`
-        h1 {
-          font-weight: lighter;
-        }
-      `}</style>
     </CenterContent>
   </header>;
 
