@@ -1,63 +1,88 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import CenterContent from '../center-content';
 import Button from '../button';
-import FilterSection from './filter-section';
+import OpenNowFilter from './open-now-filter';
+import Select from './select';
 
-const Filter = () =>
-  <CenterContent>
-    <nav className='filter'>
-      <div className='filter-options'>
-        <span>Filter By:</span>
-        <form id='filter-form'>
-          <FilterSection>
-            <label>Open Now</label>
-            <input type='checkbox' name='open-now' />
-          </FilterSection>
-          <FilterSection>
-            <select name='price'>
-              <option>Price</option>
-              <option>$</option>
-              <option>$$</option>
-            </select>
-          </FilterSection>
-          <FilterSection>
-              <select name='categories'>
-                <option>Categories</option>
-                <option>Sushi</option>
-                <option>Burgers</option>
-              </select>
-          </FilterSection>
-        </form>
-      </div>
-      <div className='clear-filter'>
-        <Button>Clear All</Button>
-      </div>
-      <style jsx>{`
-        .filter {
-          display: flex;
-          width: 100%;
-          align-items: center;
-          justify-content: space-between;
-          padding: 1rem 0;
-          border-top: 1px solid #ccc;
-          border-bottom: 1px solid #ccc;
-          margin-bottom: 1rem;
-        }
+// Filter handles the filtering options for the main page nav
+const Filter = ({ priceOptions, categoryOptions }) => {
+  const [openNow, setOpenNow] = useState(false);
+  const [priceSelect, setPriceSelect] = useState(false);
+  const [categorySelect, setCategorySelect] = useState(false);
 
-        .filter-options {
-          width: 100%;
-          display: flex;
-        }
+  const toggleSelect = (evt) => {
+    console.log(evt.target);
+  }
 
-        .clear-filter button {
-          width: 10rem;
-        }
+  return (
+    <CenterContent>
+      <nav className='filter'>
+        <div className='left'>
+          <div className='filter-by'>Filter By:</div>
+          <div className='filter-options'>
+            <OpenNowFilter checked={openNow} onClick={() => setOpenNow(!openNow)} />
 
-        #filter-form {
-          display: flex;
-        }
-      `}</style>
-    </nav>
-  </CenterContent>;
+            <Select label='Price'
+              options={priceOptions}
+              isOpen={priceSelect}
+              onClick={() => {
+                // close category menu if open
+                setCategorySelect(false);
+                setPriceSelect(!priceSelect);
+              }} />
+
+            <Select label='Categories'
+              minWidth={10}
+              options={categoryOptions}
+              isOpen={categorySelect}
+              onClick={() => {
+                // close price menu if open
+                setPriceSelect(false);
+                setCategorySelect(!categorySelect)
+              }} />
+          </div>
+        </div>
+        <div className='right'>
+          <Button className='clear-all'>Clear All</Button>
+        </div>
+
+        <style jsx>{`
+          .filter {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 1rem;
+          }
+
+          .left {
+            display: flex;
+            align-items: center;
+          }
+
+          .filter-options {
+            display: flex;
+            justify-content: flex-start;
+          }
+
+          .clear-filter button {
+            width: 10rem;
+          }
+
+          #filter-form {
+            display: flex;
+          }
+
+          .open-now {
+            border-bottom: 1px solid blue;
+          }
+        `}</style>
+      </nav>
+    </CenterContent>
+  );
+};
 
 export default Filter;
