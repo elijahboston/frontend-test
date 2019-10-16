@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import CenterContent from '../center-content';
-import Button from '../button';
+import { Button } from '../button';
 import OpenNowFilter from './open-now-filter';
 import Select from './select';
 import { AppContext } from '../../contexts';
