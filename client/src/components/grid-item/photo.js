@@ -10,7 +10,7 @@ const Photo = ({ name, url }) =>
         height: 0;
         margin: 0;
         padding-top: 70%;
-        background: url(${url});
+        background: url(${url}) 50%;
         background-size: cover;
       }
     `}</style>

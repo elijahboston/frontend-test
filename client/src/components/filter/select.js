@@ -22,10 +22,10 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
         <div className='dropdown-container'>
           <ul className='dropdown'>
             {options.map(option => {
-              const selected = selectedOptions && selectedOptions.includes(option.value);
+              const selected = selectedOptions && selectedOptions.includes(option.alias);
               console.log('selectedOptions', selectedOptions, selected);
               return (
-                <SelectOption key={option.label} toggleOption={toggleOption} selected={selected} { ...option } />
+                <SelectOption key={option.title} toggleOption={toggleOption} selected={selected} { ...option } />
               )
             })}
           </ul>
@@ -49,7 +49,7 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
           flex-direction: column;
           list-style-type: none;
           margin: 0;
-          padding: 0;
+          padding: .5rem 0;
           background: #fff;
           border: 1px solid #C8C8C8;
         }

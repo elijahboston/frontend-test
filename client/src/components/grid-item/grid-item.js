@@ -5,7 +5,7 @@ import BusinessDetails from '../business-details';
 import Photo from './photo';
 import LearnMore from './learn-more';
 
-const GridItem = ({ name, alias, photos, rating, price, isClosed, categories }) =>
+const GridItem = ({ id, name, alias, photos, rating, price, isClosed, categories }) =>
   <li className='item'>
     <Photo name={name} url={photos[0]} />
     
@@ -13,7 +13,7 @@ const GridItem = ({ name, alias, photos, rating, price, isClosed, categories }) 
     
     <Rating score={rating} />
     <BusinessDetails price={price} isClosed={isClosed} category={categories[0]} />
-    <LearnMore to={alias} />
+    <LearnMore to={`${alias}/${id}`} />
 
     <style jsx>{`
       .name {

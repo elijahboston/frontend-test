@@ -19,8 +19,6 @@ const Filter = ({ priceOptions, categoryOptions }) => {
     toggleCategorySelect
   } = useContext(AppContext);
 
-  //const [openNow, setOpenNow] = useState(false);
-
   // these are just used to control the open/close state
   // of the dropdown menus
   const [priceSelect, setPriceSelect] = useState(false);
@@ -35,6 +33,8 @@ const Filter = ({ priceOptions, categoryOptions }) => {
     setCategoriesSelected([]);
     setPricesSelected([]);
   }
+
+  const trimmedCategories = categoryOptions.slice(0, 5);
 
   return (
     <CenterContent>
@@ -57,7 +57,7 @@ const Filter = ({ priceOptions, categoryOptions }) => {
 
             <Select label='Categories'
               minWidth={10}
-              options={categoryOptions}
+              options={trimmedCategories}
               selectedOptions={categoriesSelected}
               toggleOption={toggleCategorySelect}
               isOpen={categorySelect}

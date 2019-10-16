@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Header, Filter, Grid, GridItem, CenterContent } from '../components';
+import { LoadMoreButton } from '../components/button';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+
 import { mockTitle, mockDescription } from '../storybook-helpers/_mock-data';
 
 const filterOptions = [
-  { label: 'All', value: 'All' },
-  { label: '$', value: '$' },
-  { label: '$$', value: '$$' },
-  { label: '$$$', value: '$$$' },
-  { label: '$$$$', value: '$$$$' },
+  { title: 'All', alias: 'all' },
+  { title: '$', alias: '$' },
+  { title: '$$', alias: '$$' },
+  { title: '$$$', alias: '$$$' },
+  { title: '$$$$', alias: '$$$$' },
 ];
 
 const categoryOptions = [
@@ -16,17 +20,58 @@ const categoryOptions = [
   { label: 'Burgers', value: 'burgers' },
 ];
 
-const MainView = ({ items }) =>
-  <main>
-    <Header title={mockTitle} description={mockDescription} />
-    <Filter priceOptions={filterOptions} categoryOptions={categoryOptions} />
-    <CenterContent>
-      <h2>All Restaurants</h2>
-    </CenterContent>
-    <Grid>
-      {items.map(item => <GridItem key={item.id} { ...item } isOpen={item.is_open} />)}
-    </Grid>
-  </main>;
+const MAIN_QUERY = gql`{
+  search(location:"san francisco" limit:8) {
+    business {
+      id
+      alias
+      name
+      price
+      categories {
+        title
+        alias
+      }
+      is_closed
+      photos
+    }
+  }
+  categories {
+      category {
+        title
+        alias
+      }
+  }
+}`;
+
+const MainView = ({ items }) => {
+  const { loading, error, data } = useQuery(MAIN_QUERY);
+  
+  if (loading) return (<div>Loading...</div>);
+
+  if (error) return (<div>{error}</div>);
+
+  return (
+    <main>
+      <Header title={mockTitle} description={mockDescription} />
+      <Filter priceOptions={filterOptions} categoryOptions={data.categories.category} />
+      <CenterContent>
+        <h2>All Restaurants</h2>
+      </CenterContent>
+      <Grid rows={items.length ? 2 : 0}>
+        {data.search.business.map(item => <GridItem key={item.id} { ...item } isOpen={item.is_open} />)}
+      </Grid>
+      <div className='load-more'>
+        <LoadMoreButton>Load More</LoadMoreButton>
+      </div>
+      <style jsx>{`
+        .load-more {
+          display: flex;
+          justify-content: center;
+        }
+      `}</style>
+    </main>
+  );
+}
 
 MainView.propTypes = {
   items: PropTypes.array

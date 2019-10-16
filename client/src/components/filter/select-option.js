@@ -1,10 +1,9 @@
 import React from 'react';
 import Check from '../svg/check.svg';
 
-const SelectOption = ({ label, value, selected, toggleOption }) => {
+const SelectOption = ({ title, alias, selected, toggleOption }) => {
   const onClick = () => {
-    console.log('toggle', value);
-    toggleOption(value);
+    toggleOption(alias);
   };
   
   return (
@@ -12,7 +11,7 @@ const SelectOption = ({ label, value, selected, toggleOption }) => {
       <div className='checkmark'>
         {selected && <Check />}
       </div>
-      <span>{label}</span>
+      <span>{title}</span>
       <style jsx>{`
         li {
           display: flex;

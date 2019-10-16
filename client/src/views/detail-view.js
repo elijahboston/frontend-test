@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 import {
   BusinessDetails,
@@ -39,17 +41,72 @@ const items = [
   }
 ];
 
-const DetailView = ({ slug }) =>
-  <main>
-    <CenterContent>
-      <h1>Title</h1>
-      {slug}
-      <Rating score={details.rating} />
-      <BusinessDetails {...details} />
-    </CenterContent>
-    <DetailHero address={'123 Fake St'} />
-    <Reviews items={items} />
-  </main>;
+const DETAIL_QUERY = gql`
+  query getDetails($id: String) {
+    business(id: $id) {
+      name
+      photos
+      price
+      rating
+      categories {
+        title
+        alias
+      }
+      is_closed
+      location {
+        formatted_address
+      }
+      review_count
+      reviews {
+        rating
+        text
+        time_created
+        user {
+          name
+          image_url
+        }
+      }
+    }
+  }
+`;
+
+const DetailView = ({ id }) => {
+  const { loading, error, data } = useQuery(DETAIL_QUERY, {
+    variables: { id }
+  });
+  
+  if (loading) return (<div>Loading...</div>);
+
+  if (error) return (<div>{error}</div>);
+
+  const {
+    name,
+    photos,
+    price,
+    rating,
+    categories,
+    is_closed: isClosed,
+    location: {
+      formatted_address: formattedAddress
+    }
+  } = data.business;
+
+  const category = categories[0]['title'];
+
+  const details = { category, price, isClosed };
+
+  return (
+    <main>
+      <CenterContent>
+        <h1>{name}</h1>
+        <Rating score={rating} />
+        <BusinessDetails {...details} />
+      </CenterContent>
+      <DetailHero address={formattedAddress} />
+      <Reviews items={items} />
+    </main>
+  );
+}
 
 DetailView.propTypes = {
   slug: PropTypes.string
