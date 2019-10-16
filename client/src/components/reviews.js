@@ -76,7 +76,7 @@ const Reviews = ({ items }) => {
       </CenterContent>
       <style jsx>{`
         .reviews {
-          margin-top: 2rem;
+          margin: 2rem 0;
         }
 
         .num-reviews {
