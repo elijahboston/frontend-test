@@ -1,12 +1,13 @@
 import React from 'react';
 import CenterContent from './center-content';
-import MapImg from './map-placeholder.png';
+
+const placeholderImg = 'https://picsum.photos/640/228';
 
 const DetailHero = ({ address }) =>
   <section className='detail-hero'>
     <CenterContent>
       <div className='scroller'>
-        <img src={MapImg} className='map' />
+        <img src={placeholderImg} className='map' />
       </div>
       <div className='address'>{address}</div>
     </CenterContent>
