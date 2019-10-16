@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import ThemeContext from '../../theme-context';
+import ThemeContext from '../../contexts/theme-context';
 import FilterSection from './filter-section';
 import Dot from '../svg/dot';
 

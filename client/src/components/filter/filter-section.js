@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import ThemeContext from '../../theme-context';
+import ThemeContext from '../../contexts/theme-context';
 
 // FilterSection helps keep different filtering sections within the navbar
 // spaced evenly, as well as allowing for a click handler to be attached to

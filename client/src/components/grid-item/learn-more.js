@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import css from 'styled-jsx/css';
-import ThemeContext from '../../theme-context';
+import ThemeContext from '../../contexts/theme-context';
 
 // Using styled-jsx's resolve method to
 // generate CSS that will be applied to the
