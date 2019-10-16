@@ -1,15 +1,18 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    index: './src/index.js'
+    index: path.resolve(__dirname, './src/index.js')
   },
   output: {
+    publicPath: '/',
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       title: 'Yelp App',
       template: './public/index.html'
