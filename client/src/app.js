@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Router } from '@reach/router';
 import { MainView, DetailView } from './views';
-import { ThemeProvider } from './theme-context';
+import { ThemeProvider, AppProvider } from './contexts';
 
 const theme = {
   primary: '#002B56',
@@ -12,26 +12,57 @@ const theme = {
   borderLight: '#C8C8C8'
 };
 
-const App = () =>
-  <div className='app'>
-    <ThemeProvider value={theme}>
-      <Router>
-        <DetailView path="/:slug" />
-        <MainView path="/" />
-      </Router>
-    </ThemeProvider>
-    <style jsx global>{`
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: 'Helvetica Neue', san-serif;
+const App = () => {
+  const [openNow, setOpenNow] = useState(false);
+  const [pricesSelected, setPricesSelected] = useState([]);
+  const [categoriesSelected, setCategoriesSelected] = useState([]);
+
+  const toggleSelected = (value, values, stateSetter) => {
+      // add or remove this price from our list of filtered prices
+      if (!values.includes(value)) {
+        console.log('adding', value);
+        stateSetter([...values, value]);
+      } else {
+        console.log('removing', value);
+        stateSetter([...values.filter(val => val !== value)]);
       }
-      
-      h1, h2 {
-        font-weight: lighter;
-      }
-    `}</style>
-  </div>;
+  }
+
+  const context = {
+    openNow,
+    pricesSelected,
+    categoriesSelected,
+    setCategoriesSelected,
+    setPricesSelected,
+    toggleOpenNow: () => setOpenNow(!openNow),
+    togglePriceSelect: (price) => toggleSelected(price, pricesSelected, setPricesSelected),
+    toggleCategorySelect: (category) => toggleSelected(category, categoriesSelected, setCategoriesSelected)
+  }
+
+  return (
+    <div className='app'>
+      <AppProvider value={context}>
+        <ThemeProvider value={theme}>
+          <Router>
+            <DetailView path="/:slug" />
+            <MainView path="/" />
+          </Router>
+        </ThemeProvider>
+      </AppProvider>
+      <style jsx global>{`
+        body {
+          padding: 0;
+          margin: 0;
+          font-family: 'Helvetica Neue', san-serif;
+        }
+        
+        h1, h2 {
+          font-weight: lighter;
+        }
+      `}</style>
+    </div>
+  );
+}
 
     
 export default App;
