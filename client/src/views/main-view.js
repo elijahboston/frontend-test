@@ -12,8 +12,8 @@ const filterOptions = [
 ];
 
 const categoryOptions = [
-  { label: 'Sushi', value: 'Sushi' },
-  { label: 'Burgers', value: 'Burgers' },
+  { label: 'Sushi', value: 'sushi' },
+  { label: 'Burgers', value: 'burgers' },
 ];
 
 const MainView = ({ items }) =>
