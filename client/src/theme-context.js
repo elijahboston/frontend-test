@@ -5,7 +5,8 @@ const ThemeContext = React.createContext({
   buttonText: '#fff',
   open: '#00E8A4',
   closed: '#FF3548',
-  fontLight: '#757575'
+  fontLight: '#757575',
+  borderLight: '#C8C8C8'
 });
 
 export default ThemeContext;
