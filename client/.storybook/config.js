@@ -1,5 +1,5 @@
 import { configure } from '@storybook/react';
 
-import '../src/static/global.css';
+import '../src/storybook-helpers/global.css';
 
 configure(require.context('../src', true, /\.stories\.js$/), module);
