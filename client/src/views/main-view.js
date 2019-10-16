@@ -3,10 +3,23 @@ import PropTypes from 'prop-types';
 import { Header, Filter, Grid, GridItem, CenterContent } from '../components';
 import { mockTitle, mockDescription } from '../storybook-helpers/_mock-data';
 
+const filterOptions = [
+  { label: 'All', value: 'All' },
+  { label: '$', value: '$' },
+  { label: '$$', value: '$$' },
+  { label: '$$$', value: '$$$' },
+  { label: '$$$$', value: '$$$$' },
+];
+
+const categoryOptions = [
+  { label: 'Sushi', value: 'Sushi' },
+  { label: 'Burgers', value: 'Burgers' },
+];
+
 const MainView = ({ items }) =>
   <main>
     <Header title={mockTitle} description={mockDescription} />
-    <Filter />
+    <Filter priceOptions={filterOptions} categoryOptions={categoryOptions} />
     <CenterContent>
       <h2>All Restaurants</h2>
     </CenterContent>
