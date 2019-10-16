@@ -1,6 +1,4 @@
 import React from 'react';
-import queryString from 'query-string';
-import { Location } from '@reach/router';
 import FilterSection from './filter-section';
 import SelectOption from './select-option';
 import CaretDown from '../svg/caret-down.svg';
@@ -21,26 +19,17 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
             <CaretDown />
           </Icon>
         </div>
-        <Location>
-          {({ location }) => {
-            // use the query string to determine which
-            // dropdown options are selected
-            const qs = queryString.parse(location.search);
-            return (
-              <div className='dropdown-container'>
-                <ul className='dropdown'>
-                  {options.map(option => {
-                    const selected = selectedOptions && selectedOptions.includes(option.value);
-                    console.log('selectedOptions', selectedOptions, selected);
-                    return (
-                      <SelectOption key={option.label} toggleOption={toggleOption} selected={selected} { ...option } />
-                    )
-                  })}
-                </ul>
-              </div>
-            );
-          }}
-        </Location>
+        <div className='dropdown-container'>
+          <ul className='dropdown'>
+            {options.map(option => {
+              const selected = selectedOptions && selectedOptions.includes(option.value);
+              console.log('selectedOptions', selectedOptions, selected);
+              return (
+                <SelectOption key={option.label} toggleOption={toggleOption} selected={selected} { ...option } />
+              )
+            })}
+          </ul>
+        </div>
       </div>
       <style jsx>{`
         .select {
