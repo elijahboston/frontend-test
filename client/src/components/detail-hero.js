@@ -3,11 +3,18 @@ import CenterContent from './center-content';
 
 const placeholderImg = 'https://picsum.photos/640/228';
 
+const smallPlaceholderImg = 'https://picsum.photos/225/200';
+
 const DetailHero = ({ address }) =>
   <section className='detail-hero'>
     <CenterContent>
-      <div className='scroller'>
-        <img src={placeholderImg} className='map' />
+      <div className='details-hero-top'>
+        <div className='map'></div>
+
+        <div className='gallery'>
+          <img src={smallPlaceholderImg} className='gallery-img' />
+          <img src={smallPlaceholderImg} className='gallery-img' />
+        </div>
       </div>
       <div className='address'>{address}</div>
     </CenterContent>
@@ -19,14 +26,30 @@ const DetailHero = ({ address }) =>
         padding: 2rem 0;
       }
 
-      .scroller {
-        height: 200px;
-        background: #ccc;
-        width: 100%;
+      .details-hero-top {
+        display: flex;
+        justify-content: space-between;
       }
-      
+
       .map {
-        height: 100%;
+        width: 50%;
+        height: 200px;
+        background: url(${placeholderImg}) no-repeat;
+      }
+
+      .map img {
+        width: 100%;
+        height: 200px;
+      }
+
+      .gallery {
+        width: 50%;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .gallery img {
+        margin: 0 0 0 1rem;
       }
 
       .address {
