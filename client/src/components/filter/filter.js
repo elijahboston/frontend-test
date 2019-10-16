@@ -1,17 +1,39 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import CenterContent from '../center-content';
 import Button from '../button';
 import OpenNowFilter from './open-now-filter';
 import Select from './select';
+import { AppContext } from '../../contexts';
+
 
 // Filter handles the filtering options for the main page nav
 const Filter = ({ priceOptions, categoryOptions }) => {
-  const [openNow, setOpenNow] = useState(false);
+  const {
+    openNow,
+    pricesSelected,
+    categoriesSelected,
+    setPricesSelected,
+    setCategoriesSelected,
+    toggleOpenNow,
+    togglePriceSelect,
+    toggleCategorySelect
+  } = useContext(AppContext);
+
+  //const [openNow, setOpenNow] = useState(false);
+
+  // these are just used to control the open/close state
+  // of the dropdown menus
   const [priceSelect, setPriceSelect] = useState(false);
   const [categorySelect, setCategorySelect] = useState(false);
 
-  const toggleSelect = (evt) => {
-    console.log(evt.target);
+  const clearAll = () => {
+    // close menus
+    setPriceSelect(false);
+    setCategorySelect(false);
+    
+    // clear selections
+    setCategoriesSelected([]);
+    setPricesSelected([]);
   }
 
   return (
@@ -20,9 +42,11 @@ const Filter = ({ priceOptions, categoryOptions }) => {
         <div className='left'>
           <div className='filter-by'>Filter By:</div>
           <div className='filter-options'>
-            <OpenNowFilter checked={openNow} onClick={() => setOpenNow(!openNow)} />
+            <OpenNowFilter checked={openNow} onClick={() => toggleOpenNow()} />
 
             <Select label='Price'
+              selectedOptions={pricesSelected}
+              toggleOption={togglePriceSelect}
               options={priceOptions}
               isOpen={priceSelect}
               onClick={() => {
@@ -34,6 +58,8 @@ const Filter = ({ priceOptions, categoryOptions }) => {
             <Select label='Categories'
               minWidth={10}
               options={categoryOptions}
+              selectedOptions={categoriesSelected}
+              toggleOption={toggleCategorySelect}
               isOpen={categorySelect}
               onClick={() => {
                 // close price menu if open
@@ -43,7 +69,7 @@ const Filter = ({ priceOptions, categoryOptions }) => {
           </div>
         </div>
         <div className='right'>
-          <Button className='clear-all'>Clear All</Button>
+          <Button className='clear-all' onClick={() => clearAll()}>Clear All</Button>
         </div>
 
         <style jsx>{`

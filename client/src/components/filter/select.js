@@ -11,8 +11,7 @@ const Icon = ({ children }) =>
   </span>;
 
 // Select is a custom dropdown selector
-const Select = ({ label, options, onClick, onOptionClick, isOpen, minWidth=6 }) => {
-
+const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidth=6, onClick }) => {
   return (
     <FilterSection onClick={onClick}>
       <div className='select'>
@@ -24,11 +23,19 @@ const Select = ({ label, options, onClick, onOptionClick, isOpen, minWidth=6 }) 
         </div>
         <Location>
           {({ location }) => {
+            // use the query string to determine which
+            // dropdown options are selected
             const qs = queryString.parse(location.search);
             return (
               <div className='dropdown-container'>
                 <ul className='dropdown'>
-                  {options.map(option => <SelectOption key={option.label} onClick={onOptionClick} selected={qs[label] === option.value} { ...option } />)}
+                  {options.map(option => {
+                    const selected = selectedOptions && selectedOptions.includes(option.value);
+                    console.log('selectedOptions', selectedOptions, selected);
+                    return (
+                      <SelectOption key={option.label} toggleOption={toggleOption} selected={selected} { ...option } />
+                    )
+                  })}
                 </ul>
               </div>
             );
