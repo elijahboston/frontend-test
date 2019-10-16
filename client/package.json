@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "xo && ava",
-    "dev": "webpack-dev-server --config config/webpack.config.js",
-    "build:dev": "webpack --config config/webpack.config.js",
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "build:dev": "webpack --config webpack.dev.js",
+    "build:prod": "webpack --config webpack.prod.js",
     "storybook": "start-storybook"
   },
   "repository": {
@@ -23,6 +24,7 @@
     "@reach/router": "^1.2.1",
     "@storybook/addon-knobs": "^5.2.3",
     "prop-types": "^15.7.2",
+    "query-string": "^6.8.3",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "styled-jsx": "^3.2.2"
