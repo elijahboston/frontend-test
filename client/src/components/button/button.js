@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import ThemeContext from '../../contexts/theme-context';
+import { ThemeContext } from '../../contexts';
+import buttonStyle from './button.style';
 
 const Button = ({ children, onClick }) => {
   const theme = useContext(ThemeContext);
@@ -7,13 +8,10 @@ const Button = ({ children, onClick }) => {
   return (
     <button className='button' onClick={onClick}>
       {children}
+      <style jsx>{buttonStyle}</style>
       <style jsx>{`
         .button {
-          min-width: 10rem;
-          padding: .6rem .8rem;
-          text-transform: uppercase;
           color: ${theme.primary};
-          background: #fff;
           border: 1px solid ${theme.primary};
         }
       `}</style>
