@@ -5,7 +5,6 @@ const CATEGORIES_QUERY = gql`
     categories {
       category {
         title
-        alias
         parent_categories {
           title
           alias
