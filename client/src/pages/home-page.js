@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Header, CenterContent } from '../components';
 import { AppContext } from '../contexts';
-import { FilterView, SearchView } from '../views';
+import { FilterView, GridView } from '../views';
 
 import { mockTitle, mockDescription } from '../storybook-helpers/_mock-data';
 
@@ -19,7 +19,7 @@ const HomePage = () => {
       <CenterContent>
         <h2>All Restaurants</h2>
       </CenterContent>
-      <SearchView categories={categoriesSelected} price={pricesSelected} isOpen={openNow} />
+      <GridView categories={categoriesSelected} price={pricesSelected} isOpen={openNow} />
       <style jsx>{`
         .load-more {
           display: flex;
