@@ -1,19 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CenterContent from './center-content';
-
+import DetailPhoto from './detail-photo';
 const placeholderImg = 'https://picsum.photos/640/228';
 
-const smallPlaceholderImg = 'https://picsum.photos/225/200';
-
-const DetailHero = ({ address }) =>
+const DetailHero = ({ name, address, photos }) =>
   <section className='detail-hero'>
     <CenterContent>
       <div className='details-hero-top'>
         <div className='map'></div>
 
-        <div className='gallery'>
-          <img src={smallPlaceholderImg} className='gallery-img' />
-          <img src={smallPlaceholderImg} className='gallery-img' />
+        <div className='photos'>
+          {photos && photos.map(src => <DetailPhoto key={src} name={name} url={src} />)}
         </div>
       </div>
       <div className='address'>{address}</div>
@@ -28,28 +26,20 @@ const DetailHero = ({ address }) =>
 
       .details-hero-top {
         display: flex;
-        justify-content: space-between;
+        justify-content: left;
+        height: 13rem;
       }
 
       .map {
         width: 50%;
-        height: 200px;
+        height: 100%;
         background: url(${placeholderImg}) no-repeat;
       }
 
-      .map img {
-        width: 100%;
-        height: 200px;
-      }
-
-      .gallery {
+      .photos {
         width: 50%;
         display: flex;
-        justify-content: space-evenly;
-      }
-
-      .gallery img {
-        margin: 0 0 0 1rem;
+        justify-content: left;
       }
 
       .address {
@@ -57,5 +47,17 @@ const DetailHero = ({ address }) =>
       }
     `}</style>
   </section>;
+
+DetailHero.propTypes = {
+  name: PropTypes.string,
+  address: PropTypes.string,
+  photos: PropTypes.array
+}
+
+DetailHero.defaultProps = {
+  name: '',
+  address: '',
+  photos: []
+}
 
 export default DetailHero;
