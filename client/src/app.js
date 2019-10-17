@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Router } from '@reach/router';
 import { MainView, DetailView } from './views';
 import { ThemeProvider, AppProvider } from './contexts';
-import ApolloClient from 'apollo-boost';
+import apolloClient from './helpers/apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
 const theme = {
@@ -14,19 +14,7 @@ const theme = {
   borderLight: '#C8C8C8'
 };
 
-// in production mode we can use the API directly
-// otherwise the dev server is setup to proxy through /api
-const client = new ApolloClient({
-  uri: process.env.NODE_ENV === 'production' ? 'https://api.yelp.com/v3/graphql' : '/api',
-  request: (operation) => {
-    operation.setContext({
-      headers: {
-        Authorization: `Bearer ${process.env.GRAPHQL_API_KEY}`,
-        'Accept-Language': 'en_US'
-      }
-    });
-  }
-});
+const client = new apolloClient();
 
 const App = () => {
   const [openNow, setOpenNow] = useState(false);
