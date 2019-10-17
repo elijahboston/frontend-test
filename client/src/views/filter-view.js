@@ -1,7 +1,7 @@
 import React from 'react';
 import { Filter, Loading } from '../components';
 import { useQuery } from '@apollo/react-hooks';
-import { CATEGORIES_QUERY } from '../graphql';
+import { CATEGORIES_QUERY } from '../queries';
 
 const priceOptions = [
   { title: 'All', alias: 0 },
@@ -20,8 +20,6 @@ const FilterView = () => {
 
   if (error) return (<div>{error.message}</div>);
 
-  console.log(data);
-
   const {
     categories: {
       category: allCategories
@@ -30,7 +28,6 @@ const FilterView = () => {
 
   // filter out non-restaurants
   // based on parent category
-  
   const categoryOptions = allCategories
     .filter(category => category.parent_categories
       .filter(parentCategory => parentCategory.alias === 'restaurants').length > 0);

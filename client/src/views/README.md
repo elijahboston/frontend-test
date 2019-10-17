@@ -1,0 +1,1 @@
+Views wrap components that rely on fetched data.

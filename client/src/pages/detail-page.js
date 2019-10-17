@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
-import { DETAIL_QUERY } from '../graphql';
+import { DETAIL_QUERY } from '../queries';
 
 import {
   BusinessDetails,
@@ -11,8 +11,7 @@ import {
   Reviews
 } from '../components';
 
-
-const DetailView = ({ id }) => {
+const DetailPage = ({ id }) => {
   const { loading, error, data } = useQuery(DETAIL_QUERY, {
     variables: { id }
   });
@@ -59,12 +58,12 @@ const DetailView = ({ id }) => {
   );
 }
 
-DetailView.propTypes = {
+DetailPage.propTypes = {
   id: PropTypes.string,
 }
 
-DetailView.defaultProps = {
+DetailPage.defaultProps = {
   id: ''
 }
 
-export default DetailView;
+export default DetailPage;

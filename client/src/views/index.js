@@ -1,2 +1,2 @@
-export {default as MainView} from './main-view';
-export {default as DetailView} from './detail-view';
+export {default as FilterView} from './filter-view';
+export {default as SearchView} from './search-view';

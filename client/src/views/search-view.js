@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Loading, Grid, GridItem } from '../components';
 import { useQuery } from '@apollo/react-hooks';
-import { SEARCH_QUERY } from '../graphql';
+import { SEARCH_QUERY } from '../queries';
 
 // SearchView handles fetching and updating search results
 const SearchView = ({ categories, price, isOpen }) => {
@@ -39,7 +39,7 @@ const SearchView = ({ categories, price, isOpen }) => {
     search: {
       business: items
     }
-  } = data ? initData : data;
+  } = !data ? initData : data;
 
   return (
     <div className='grid-view'>

@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import { Header, CenterContent } from '../components';
 import { AppContext } from '../contexts';
-import SearchView from './search-view';
-import FilterView from './filter-view';
+import { FilterView, SearchView } from '../views';
 
 import { mockTitle, mockDescription } from '../storybook-helpers/_mock-data';
 
-const MainView = () => {
+const HomePage = () => {
   const {
     openNow,
     pricesSelected,
@@ -31,4 +30,4 @@ const MainView = () => {
   );
 }
 
-export default MainView;
+export default HomePage;
