@@ -1,5 +1,5 @@
 import React from 'react';
-import { Filter, Loading } from '../components';
+import { Filter, Loading, APIError } from '../components';
 import { useQuery } from '@apollo/react-hooks';
 import { CATEGORIES_QUERY } from '../queries';
 
@@ -18,7 +18,7 @@ const FilterView = () => {
   
   if (loading) return (<Loading />);
 
-  if (error) return (<div>{error.message}</div>);
+  if (error) return (<APIError error={error} />);
 
   const {
     categories: {
