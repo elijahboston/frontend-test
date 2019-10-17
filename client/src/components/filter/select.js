@@ -64,9 +64,12 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
           flex-direction: column;
           list-style-type: none;
           margin: 0;
-          padding: .5rem 0;
+          padding: 0;
           background: #fff;
           border: 1px solid ${theme.borderLight};
+          -webkit-box-shadow: 0px 11px 15px -6px rgba(0,0,0,0.3);
+          -moz-box-shadow: 0px 11px 15px -6px rgba(0,0,0,0.3);
+          box-shadow: 0px 11px 15px -6px rgba(0,0,0,0.3);
         }
 
         .title {
