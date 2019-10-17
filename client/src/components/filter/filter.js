@@ -34,8 +34,6 @@ const Filter = ({ priceOptions, categoryOptions }) => {
     setPricesSelected([]);
   }
 
-  const trimmedCategories = categoryOptions.slice(0, 5);
-
   return (
     <CenterContent>
       <nav className='filter'>
@@ -57,7 +55,16 @@ const Filter = ({ priceOptions, categoryOptions }) => {
 
             <Select label='Categories'
               minWidth={10}
-              options={trimmedCategories}
+              options={categoryOptions.map(category => {
+                const {
+                  title,
+                  parent_categories: {
+                    alias
+                  }
+                } = category;
+
+                return { title, alias };
+              })}
               selectedOptions={categoriesSelected}
               toggleOption={toggleCategorySelect}
               isOpen={categorySelect}
