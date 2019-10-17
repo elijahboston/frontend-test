@@ -40,13 +40,13 @@ const BusinessDetails = ({ category, price, isOpen }) =>
 BusinessDetails.propTypes = {
   category: PropTypes.string,
   price: PropTypes.string,
-  isClosed: PropTypes.bool
+  isOpen: PropTypes.bool
 }
 
 BusinessDetails.defaultProps = {
   category: '',
   price: '$',
-  isClosed: false
+  isOpen: false
 }
 
 export default BusinessDetails;

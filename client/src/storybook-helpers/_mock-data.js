@@ -13,5 +13,5 @@ export const gridItemData = {
   "rating": 4.5,
   "price": "$$",
   "category": "American (New)",
-  "isClosed": false // eslint-disable-line camelcase
+  "isClosed": false
 };

@@ -47,7 +47,7 @@ SelectOption.propTypes = {
 }
 
 SelectOption.defaultProps = {
-  title: 'My Option',
+  title: 'Option',
   alias: 1,
   isSelected: false,
   toggleOption: () => {}

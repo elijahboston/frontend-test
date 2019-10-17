@@ -30,7 +30,7 @@ GridItem.propTypes = {
   photos: PropTypes.array,
   rating: PropTypes.number,
   price: PropTypes.string,
-  isClosed: PropTypes.bool,
+  isOpen: PropTypes.bool,
   category: PropTypes.string
 };
 
@@ -41,7 +41,7 @@ GridItem.defaultProps = {
   photos: [],
   rating: 5,
   price: '$',
-  isClosed: false,
+  isOpen: false,
   category: ''
 };
 
