@@ -29,6 +29,7 @@ const DetailView = ({ id }) => {
     categories,
     is_closed: isClosed,
     reviews,
+    review_count: reviewCount,
     location: {
       formatted_address: formattedAddress
     }
@@ -36,17 +37,24 @@ const DetailView = ({ id }) => {
 
   const category = categories[0]['title'];
 
-  const details = { category, price, isClosed };
+  const details = { category, price, isOpen: !isClosed };
 
   return (
     <main>
       <CenterContent>
         <h1>{name}</h1>
         <Rating score={rating} />
-        <BusinessDetails {...details} />
+        <div className='business-details'>
+          <BusinessDetails {...details} />
+        </div>
       </CenterContent>
       <DetailHero name={name} photos={photos} address={formattedAddress} />
-      <Reviews items={reviews} />
+      <Reviews items={reviews} reviewCount={reviewCount} />
+      <style jsx>{`
+        .business-details {
+          font-size: 25px;
+        }
+      `}</style>
     </main>
   );
 }

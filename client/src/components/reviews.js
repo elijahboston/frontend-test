@@ -63,7 +63,7 @@ ReviewItem.defaultProps = {
   rating: 3.5
 };
 
-const Reviews = ({ items }) => {
+const Reviews = ({ reviewCount, items }) => {
   const mappedItems = items.map(item => {
     return {
       id: item.id,
@@ -78,7 +78,7 @@ const Reviews = ({ items }) => {
   return (
     <section className='reviews'>
       <CenterContent>
-        <div className='num-reviews'>321 Reviews</div>
+        <div className='num-reviews'>{reviewCount} Reviews</div>
         <ul className='review-list'>
           {mappedItems.map(props => <ReviewItem key={props.id} {...props} />)}
         </ul>
@@ -104,12 +104,12 @@ const Reviews = ({ items }) => {
 };
 
 Reviews.propTypes = {
-  id: PropTypes.string,
-  items: PropTypes.any
+  reviewCount: PropTypes.number,
+  items: PropTypes.array
 };
 
 Reviews.defaultProps = {
-  id: 'abc-123',
+  reviewCount: 0,
   items: []
 };
 
