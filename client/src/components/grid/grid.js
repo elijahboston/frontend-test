@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CenterContent from '../center-content';
+import { LoadMoreButton } from '../button';
 
-const Grid = ({ children, rows}) =>
+const Grid = ({ children, rows, onLoadMore, hasMoreResults }) =>
   <CenterContent>
     <div className='grid'>
         <ul>{children}</ul>
+    </div>
+    <div className='load-more'>
+      {hasMoreResults && <LoadMoreButton onClick={onLoadMore}>Load More</LoadMoreButton>}
     </div>
     <style jsx>{`
       .grid > ul {
@@ -14,7 +18,7 @@ const Grid = ({ children, rows}) =>
         list-style-type: none;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-        grid-template-rows: repeat(${rows}, 25rem);
+        grid-template-rows: repeat(${rows}, 20rem);
         grid-gap: 1rem;
         grid-auto-flow: dense;
       }
@@ -28,12 +32,16 @@ const Grid = ({ children, rows}) =>
 
 Grid.propTypes = {
   rows: PropTypes.number,
-  children: PropTypes.any
+  children: PropTypes.any,
+  onLoadMore: PropTypes.func,
+  hasMoreResults: PropTypes.bool
 }
 
 Grid.defaultProps = {
   rows: 0,
-  children: null
+  children: null,
+  onLoadMore: () => {},
+  hasMoreResults: true
 }
 
 export default Grid;

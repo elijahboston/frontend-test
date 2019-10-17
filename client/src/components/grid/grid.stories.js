@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, number } from '@storybook/addon-knobs';
+import { withKnobs, number, boolean } from '@storybook/addon-knobs';
 import { buildGrid } from '../../storybook-helpers/_helpers';
 import Grid from './grid';
 
@@ -16,10 +16,13 @@ const options = {
    max: 8,
    step: 1,
 };
-const groupId = 'SCORE-ID1';
+const groupId = 'Grid';
 
-stories.add('Default', () => (
-  <Grid>
-    {buildGrid(number(label, defaultValue, options, groupId))}
-  </Grid>
-));
+stories.add('Default', () => {
+  const n = number(label, defaultValue, options, groupId);
+  return (
+    <Grid rows={n/4} onLoadMore={() => {}} hasMoreResults={boolean('Has more results', true, groupId)}>
+      {buildGrid(n)}
+    </Grid>
+  )
+});
