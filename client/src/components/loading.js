@@ -1,0 +1,36 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const Loading = ({ isFullScreen }) =>
+  <div className='loading'>
+    <div className='loading-prompt'>
+      Loading...
+    </div>
+    <style jsx>{`
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: ${isFullScreen ? 'absolute' : 'relative'};
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(2px);
+      }
+
+      .loading-prompt {
+        text-align: center;
+        background: #fff;
+        padding: 5rem;
+      }
+    `}</style>
+  </div>;
+
+Loading.propTypes = {
+  isFullScreen: PropTypes.bool,
+};
+
+Loading.defaultProps = {
+  isFullScreen: false
+};
+
+export default Loading;
