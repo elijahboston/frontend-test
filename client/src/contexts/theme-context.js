@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ThemeContext = React.createContext({});
 
@@ -15,6 +16,14 @@ export const ThemeProvider = ({ children }) =>
   <ThemeContext.Provider value={theme}>
     {children}
   </ThemeContext.Provider>;
+
+ThemeProvider.propTypes = {
+  children: PropTypes.any
+};
+
+ThemeProvider.defaultProps = {
+  children: null
+};
 
 export const ThemeConsumer = ThemeContext.Consumer;
 

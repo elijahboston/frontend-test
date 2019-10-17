@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const AppContext = React.createContext({});
 
@@ -38,6 +39,14 @@ export const AppProvider = ({ children }) => {
     </AppContext.Provider>
   )
 }
+
+AppProvider.propTypes = {
+  children: PropTypes.any
+};
+
+AppProvider.defaultProps = {
+  children: null
+};
 
 export const AppConsumer = AppContext.Consumer;
 
