@@ -14,8 +14,6 @@ const theme = {
   borderLight: '#C8C8C8'
 };
 
-const client = new apolloClient();
-
 const App = () => {
   const [openNow, setOpenNow] = useState(false);
   const [pricesSelected, setPricesSelected] = useState([]);
@@ -49,7 +47,7 @@ const App = () => {
 
   return (
     <div className='app'>
-      <ApolloProvider client={client}>
+      <ApolloProvider client={apolloClient}>
         <AppProvider value={context}>
           <ThemeProvider value={theme}>
             <Router>
