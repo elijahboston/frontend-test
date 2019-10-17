@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Header, Filter, Grid, GridItem, CenterContent } from '../components';
 import { LoadMoreButton } from '../components/button';
 import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import { MAIN_QUERY } from '../graphql';
 
 import { mockTitle, mockDescription } from '../storybook-helpers/_mock-data';
 
@@ -15,30 +15,7 @@ const filterOptions = [
   { title: '$$$$', alias: '$$$$' },
 ];
 
-const MAIN_QUERY = gql`{
-  search(location:"san francisco" limit:8) {
-    business {
-      id
-      alias
-      name
-      price
-      categories {
-        title
-        alias
-      }
-      is_closed
-      photos
-    }
-  }
-  categories {
-      category {
-        title
-        alias
-      }
-  }
-}`;
-
-const MainView = ({ items }) => {
+const MainView = () => {
   const { loading, error, data } = useQuery(MAIN_QUERY);
   
   if (loading) return (<div>Loading...</div>);
@@ -67,13 +44,5 @@ const MainView = ({ items }) => {
     </main>
   );
 }
-
-MainView.propTypes = {
-  items: PropTypes.array
-};
-
-MainView.defaultProps = {
-  items: []
-};
 
 export default MainView;

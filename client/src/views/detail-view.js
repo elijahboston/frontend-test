@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import { DETAIL_QUERY } from '../graphql';
 
 import {
   BusinessDetails,
@@ -11,35 +11,6 @@ import {
   Reviews
 } from '../components';
 
-const DETAIL_QUERY = gql`
-  query getDetails($id: String) {
-    business(id: $id) {
-      name
-      photos
-      price
-      rating
-      categories {
-        title
-        alias
-      }
-      is_closed
-      location {
-        formatted_address
-      }
-      review_count
-      reviews {
-        id
-        rating
-        text
-        time_created
-        user {
-          name
-          image_url
-        }
-      }
-    }
-  }
-`;
 
 const DetailView = ({ id }) => {
   const { loading, error, data } = useQuery(DETAIL_QUERY, {
