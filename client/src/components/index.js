@@ -8,5 +8,6 @@ export {default as BusinessDetails} from './business-details';
 export {default as Rating} from './rating';
 export {default as Reviews} from './reviews';
 export {default as Loading} from './loading';
+export {default as APIError} from './api-error';
 export {Button} from './button';
 export {LoadMoreButton} from './button';
