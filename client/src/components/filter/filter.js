@@ -56,12 +56,13 @@ const Filter = ({ priceOptions, categoryOptions }) => {
             <Select label='Categories'
               minWidth={10}
               options={categoryOptions.map(category => {
-                const {
-                  title,
-                  parent_categories: {
-                    alias
-                  }
-                } = category;
+                const { title } = category;
+                // Replace non-characters to infer the alias
+                // see /queries/categories-query.js for
+                // why we can't get this from the query
+                const alias = title
+                  .replace(/( )|(-)|(\/)|(\+)|(\.)|(&)/g, '')
+                  .toLowerCase();
 
                 return { title, alias };
               })}
