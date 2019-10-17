@@ -24,6 +24,7 @@ const GridItem = ({ id, name, alias, photos, rating, price, isClosed, categories
   </li>;
 
 GridItem.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   alias: PropTypes.string,
   photos: PropTypes.array,
@@ -34,7 +35,8 @@ GridItem.propTypes = {
 };
 
 GridItem.defaultProps = {
-  name: 'Resturant',
+  id: '',
+  name: '',
   alias: '',
   photos: [],
   rating: 5,

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { ThemeContext } from '../../contexts';
 import buttonStyle from './button.style';
 
@@ -6,7 +7,7 @@ const LoadMoreButton = ({ children, onClick }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <button className='button' onClick={onClick}>
+    <button type='button' className='button' onClick={onClick}>
       {children}
       <style jsx>{buttonStyle}</style>
       <style jsx>{`
@@ -20,5 +21,15 @@ const LoadMoreButton = ({ children, onClick }) => {
     </button>
   );
 };
+
+LoadMoreButton.propTypes = {
+  children: PropTypes.object,
+  onClick: PropTypes.func,
+}
+
+LoadMoreButton.defaultProps = {
+  children: {},
+  onClick: () => {}
+}
 
 export default LoadMoreButton;

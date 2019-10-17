@@ -35,13 +35,13 @@ const App = () => {
 
   // handle toggling multiple values
   // by adding/removing them from an array in local state
-  const toggleSelected = (value, values, stateSetter) => {
-      if (!values.includes(value)) {
-        stateSetter([...values, value]);
-      } else {
-        stateSetter([...values.filter(val => val !== value)]);
-      }
-  };
+  const toggleSelected = (value, values, stateSetter) =>
+    values.includes(value) ?
+    // remove value
+    stateSetter([...values.filter(val => val !== value)]) :
+    // add value
+    stateSetter([...values, value]);
+  
 
   // setup app context
   // this is mostly used by the filter component

@@ -1,19 +1,19 @@
-const path = require('path');
 const merge = require('webpack-merge');
-const webpackDashboard = require('webpack-dashboard/plugin');
+const WebpackDashboard = require('webpack-dashboard/plugin');
 const defaultConfig = require('./webpack.config');
 
 module.exports = merge(defaultConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
   plugins: [
-    new webpackDashboard()
+    new WebpackDashboard()
   ],
   devServer: {
     publicPath: '/',
     compress: true,
     port: 3000,
     historyApiFallback: true,
+    hot: true,
     proxy: {
       '/api': {
         target: 'https://api.yelp.com/v3/graphql',

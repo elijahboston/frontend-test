@@ -27,11 +27,13 @@ const FilterSection = ({ children, onClick }) => {
 }
 
 FilterSection.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
+  onClick: PropTypes.func
 };
 
 FilterSection.defaultProps = {
-  children: null
+  children: null,
+  onClick: () => {}
 }
 
 export default FilterSection;

@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import CenterContent from '../center-content';
 import { Button } from '../button';
 import OpenNowFilter from './open-now-filter';
 import Select from './select';
 import { AppContext } from '../../contexts';
-
 
 // Filter handles the filtering options for the main page nav
 const Filter = ({ priceOptions, categoryOptions }) => {
@@ -42,7 +42,7 @@ const Filter = ({ priceOptions, categoryOptions }) => {
         <div className='left'>
           <div className='filter-by'>Filter By:</div>
           <div className='filter-options'>
-            <OpenNowFilter checked={openNow} onClick={() => toggleOpenNow()} />
+            <OpenNowFilter isChecked={openNow} onClick={() => toggleOpenNow()} />
 
             <Select label='Price'
               selectedOptions={pricesSelected}
@@ -110,5 +110,15 @@ const Filter = ({ priceOptions, categoryOptions }) => {
     </CenterContent>
   );
 };
+
+Filter.propTypes = {
+  priceOptions: PropTypes.array,
+  categoryOptions: PropTypes.array,
+}
+
+Filter.defaultProps = {
+  priceOptions: [],
+  categoryOptions: [],
+}
 
 export default Filter;

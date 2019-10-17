@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FilterSection from './filter-section';
 import SelectOption from './select-option';
 import CaretDown from '../svg/caret-down.svg';
@@ -7,6 +8,14 @@ const Icon = ({ children }) =>
   <span className='icon'>
     {children}
   </span>;
+
+Icon.propTypes = {
+  children: PropTypes.object
+}
+
+Icon.defaultProps = {
+  children: {}
+}
 
 // Select is a custom dropdown selector
 const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidth=6, onClick }) => {
@@ -22,10 +31,10 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
         <div className='dropdown-container'>
           <ul className='dropdown'>
             {options.map(option => {
-              const selected = selectedOptions && selectedOptions.includes(option.alias);
-              console.log('selectedOptions', selectedOptions, selected);
+              const isSelected = selectedOptions && selectedOptions.includes(option.alias);
+              console.log('selectedOptions', selectedOptions, isSelected);
               return (
-                <SelectOption key={option.title} toggleOption={toggleOption} selected={selected} { ...option } />
+                <SelectOption key={option.title} toggleOption={toggleOption} isSelected={isSelected} { ...option } />
               )
             })}
           </ul>
@@ -63,4 +72,25 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
     </FilterSection>
   );
 }
+
+Select.propTypes = {
+  label: PropTypes.string,
+  options: PropTypes.array,
+  selectedOptions: PropTypes.arrayOf,
+  toggleOption: PropTypes.func,
+  isOpen: PropTypes.bool,
+  minWidth: PropTypes.number,
+  onClick: PropTypes.func
+}
+
+Select.defaultProps = {
+  label: '',
+  options: [],
+  selectedOptions: [],
+  toggleOption: () => {},
+  isOpen: false,
+  minWidth: 0,
+  onClick: () => {}
+}
+
 export default Select;

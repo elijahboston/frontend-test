@@ -48,16 +48,25 @@ const ReviewItem = ({ name, date, body, picture, rating }) =>
   </li>;
 
 ReviewItem.propTypes = {
-  items: PropTypes.any
+  name: PropTypes.string,
+  date: PropTypes.string,
+  body: PropTypes.string,
+  picture: PropTypes.array,
+  rating: PropTypes.number
 };
 
 ReviewItem.defaultProps = {
-  items: []
+  name: 'Jane Doe',
+  date: '10/2/19',
+  body: 'This product was excellent',
+  picture: ['http://placehold.it/300/250'],
+  rating: 3.5
 };
 
 const Reviews = ({ items }) => {
   const mappedItems = items.map(item => {
     return {
+      id: item.id,
       body: item.text,
       date: item.time_created,
       rating: item.rating,
@@ -71,7 +80,7 @@ const Reviews = ({ items }) => {
       <CenterContent>
         <div className='num-reviews'>321 Reviews</div>
         <ul className='review-list'>
-          {mappedItems.map(props => <ReviewItem {...props} />)}
+          {mappedItems.map(props => <ReviewItem key={props.id} {...props} />)}
         </ul>
       </CenterContent>
       <style jsx>{`
@@ -95,10 +104,12 @@ const Reviews = ({ items }) => {
 };
 
 Reviews.propTypes = {
+  id: PropTypes.string,
   items: PropTypes.any
 };
 
 Reviews.defaultProps = {
+  id: 'abc-123',
   items: []
 };
 

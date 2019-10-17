@@ -27,10 +27,12 @@ const Grid = ({ children, rows}) =>
   </CenterContent>;
 
 Grid.propTypes = {
+  rows: PropTypes.number,
   children: PropTypes.any
 }
 
 Grid.defaultProps = {
+  rows: 0,
   children: null
 }
 

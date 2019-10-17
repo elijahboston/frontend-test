@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Check from '../svg/check.svg';
 
-const SelectOption = ({ title, alias, selected, toggleOption }) => {
+const SelectOption = ({ title, alias, isSelected, toggleOption }) => {
   const onClick = () => {
     toggleOption(alias);
   };
@@ -9,7 +10,7 @@ const SelectOption = ({ title, alias, selected, toggleOption }) => {
   return (
     <li onClick={() => onClick()}>
       <div className='checkmark'>
-        {selected && <Check />}
+        {isSelected && <Check />}
       </div>
       <span>{title}</span>
       <style jsx>{`
@@ -30,12 +31,26 @@ const SelectOption = ({ title, alias, selected, toggleOption }) => {
           display: flex;
           border-radius: 20rem;
           background: #fff;
-          border: 1px solid ${selected ? 'transparent' : '#ccc'};
+          border: 1px solid ${isSelected ? 'transparent' : '#ccc'};
           margin-right: .5rem;
         }
       `}</style>
     </li>
   );
+}
+
+SelectOption.propTypes = {
+  title: PropTypes.string,
+  alias: PropTypes.string,
+  isSelected: PropTypes.bool,
+  toggleOption: PropTypes.func
+}
+
+SelectOption.defaultProps = {
+  title: 'My Option',
+  alias: 'my-option-alias',
+  isSelected: false,
+  toggleOption: () => {}
 }
 
 export default SelectOption;

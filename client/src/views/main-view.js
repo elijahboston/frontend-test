@@ -15,11 +15,6 @@ const filterOptions = [
   { title: '$$$$', alias: '$$$$' },
 ];
 
-const categoryOptions = [
-  { label: 'Sushi', value: 'sushi' },
-  { label: 'Burgers', value: 'burgers' },
-];
-
 const MAIN_QUERY = gql`{
   search(location:"san francisco" limit:8) {
     business {
@@ -57,7 +52,7 @@ const MainView = ({ items }) => {
       <CenterContent>
         <h2>All Restaurants</h2>
       </CenterContent>
-      <Grid rows={items.length ? 2 : 0}>
+      <Grid rows={items.length > 0 ? 2 : 0}>
         {data.search.business.map(item => <GridItem key={item.id} { ...item } isOpen={item.is_open} />)}
       </Grid>
       <div className='load-more'>

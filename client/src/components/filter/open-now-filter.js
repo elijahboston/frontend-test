@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import ThemeContext from '../../contexts/theme-context';
 import FilterSection from './filter-section';
 import Dot from '../svg/dot';
@@ -6,13 +7,13 @@ import Dot from '../svg/dot';
 // OpenNowFilter toggles between showing a filled or empty radio button
 // It does this by using border-radius to create a circular div,
 // then toggling an SVG within that div based on the 'checked' property
-const OpenNowFilter = ({ checked, onClick }) => {
+const OpenNowFilter = ({ isChecked, onClick }) => {
   const theme = useContext(ThemeContext);
 
   return (
     <FilterSection onClick={onClick}>
       <div className='open-now-toggle'>
-        {checked && <Dot width='.5rem' height='.5rem' fill={theme.primary} />}
+        {isChecked && <Dot width='.5rem' height='.5rem' fill={theme.primary} />}
       </div>
       <span>Open Now</span>
       <style jsx>{`
@@ -33,5 +34,14 @@ const OpenNowFilter = ({ checked, onClick }) => {
   );
 }
 
+OpenNowFilter.propTypes = {
+  isChecked: PropTypes.bool,
+  onClick: PropTypes.func
+}
+
+OpenNowFilter.defaultProps = {
+  isChecked: false,
+  onClick: () => {}
+}
 
 export default OpenNowFilter;
