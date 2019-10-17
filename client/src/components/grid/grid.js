@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CenterContent from '../center-content';
-import { LoadMoreButton } from '../button';
 
-const Grid = ({ children, rows, onLoadMore, hasMoreResults }) =>
+const Grid = ({ children, rows }) =>
   <CenterContent>
     <div className='grid'>
         <ul>{children}</ul>
     </div>
-    <div className='load-more'>
-      {hasMoreResults && <LoadMoreButton onClick={onLoadMore}>Load More</LoadMoreButton>}
-    </div>
+
     <style jsx>{`
       .grid > ul {
         padding: 0;
@@ -32,16 +29,12 @@ const Grid = ({ children, rows, onLoadMore, hasMoreResults }) =>
 
 Grid.propTypes = {
   rows: PropTypes.number,
-  children: PropTypes.any,
-  onLoadMore: PropTypes.func,
-  hasMoreResults: PropTypes.bool
+  children: PropTypes.any
 }
 
 Grid.defaultProps = {
   rows: 0,
-  children: null,
-  onLoadMore: () => {},
-  hasMoreResults: true
+  children: null
 }
 
 export default Grid;
