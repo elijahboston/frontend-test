@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OpenNow from './open-now';
 
-const BusinessDetails = ({ category, price, isClosed }) =>
+// BusinessDetails displays basic category/price/open info
+
+// NOTE: the font size is set in 'em' not 'rem' here,
+// this is so we can resize the component's size externally
+// by changing the font size of the parent container
+const BusinessDetails = ({ category, price, isOpen }) =>
   <div className='details'>
     <div className='left'>
       <span className='category'>
@@ -13,14 +18,14 @@ const BusinessDetails = ({ category, price, isClosed }) =>
       </span>
     </div>
     <div className='right'>
-      <OpenNow isClosed={isClosed} />
+      <OpenNow isOpen={isOpen} />
     </div>
     <style jsx>{`
       .details {
         margin: 1rem 0;
         display: flex;
         justify-content: space-between;
-        font-size: .8rem;
+        font-size: .5em;
         text-transform: uppercase;
         color: #757575;
       }
@@ -33,15 +38,13 @@ const BusinessDetails = ({ category, price, isClosed }) =>
   </div>;
 
 BusinessDetails.propTypes = {
-  category: PropTypes.object,
+  category: PropTypes.string,
   price: PropTypes.string,
   isClosed: PropTypes.bool
 }
 
 BusinessDetails.defaultProps = {
-  category: {
-    title: ''
-  },
+  category: '',
   price: '$',
   isClosed: false
 }

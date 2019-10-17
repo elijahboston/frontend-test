@@ -5,10 +5,10 @@ import Dot from '../svg/dot';
 const openColor = '#00E8A4';
 const closedColor = '#FF3548';
 
-const OpenNow = ({ isClosed }) =>
+const OpenNow = ({ isOpen }) =>
   <div className='open-or-closed'>
-      <Dot width='.6em' height='.6em' fill={isClosed ? closedColor : openColor} />
-      <span className='status'>{isClosed ? 'Closed' : 'Open Now'}</span>
+      <Dot width='.6em' height='.6em' fill={isOpen ? openColor : closedColor} />
+      <span className='status'>{isOpen ? 'Open Now' : 'Closed'}</span>
     <style jsx>{`
       .status {
         margin-left: .5rem;
@@ -17,11 +17,11 @@ const OpenNow = ({ isClosed }) =>
   </div>;
 
 OpenNow.propTypes = {
-  isClosed: PropTypes.bool
+  isOpen: PropTypes.bool
 }
 
 OpenNow.defaultProps = {
-  isClosed: false
+  isOpen: false
 }
 
 export default OpenNow;

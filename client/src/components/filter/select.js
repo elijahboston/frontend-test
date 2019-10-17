@@ -18,7 +18,7 @@ Icon.defaultProps = {
 }
 
 // Select is a custom dropdown selector
-const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidth=6, onClick }) => {
+const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidth, onClick }) => {
   return (
     <FilterSection onClick={onClick}>
       <div className='select'>
@@ -32,7 +32,7 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
           <ul className='dropdown'>
             {options.map(option => {
               const isSelected = selectedOptions && selectedOptions.includes(option.alias);
-              console.log('selectedOptions', selectedOptions, isSelected);
+
               return (
                 <SelectOption key={option.title} toggleOption={toggleOption} isSelected={isSelected} { ...option } />
               )
@@ -76,7 +76,7 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
 Select.propTypes = {
   label: PropTypes.string,
   options: PropTypes.array,
-  selectedOptions: PropTypes.arrayOf,
+  selectedOptions: PropTypes.array,
   toggleOption: PropTypes.func,
   isOpen: PropTypes.bool,
   minWidth: PropTypes.number,
@@ -89,7 +89,7 @@ Select.defaultProps = {
   selectedOptions: [],
   toggleOption: () => {},
   isOpen: false,
-  minWidth: 0,
+  minWidth: 6,
   onClick: () => {}
 }
 

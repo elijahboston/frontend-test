@@ -41,14 +41,14 @@ const SelectOption = ({ title, alias, isSelected, toggleOption }) => {
 
 SelectOption.propTypes = {
   title: PropTypes.string,
-  alias: PropTypes.string,
+  alias: PropTypes.any,
   isSelected: PropTypes.bool,
   toggleOption: PropTypes.func
 }
 
 SelectOption.defaultProps = {
   title: 'My Option',
-  alias: 'my-option-alias',
+  alias: 1,
   isSelected: false,
   toggleOption: () => {}
 }

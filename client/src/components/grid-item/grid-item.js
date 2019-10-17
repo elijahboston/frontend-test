@@ -5,14 +5,14 @@ import BusinessDetails from '../business-details';
 import Photo from './photo';
 import LearnMore from './learn-more';
 
-const GridItem = ({ id, name, alias, photos, rating, price, isClosed, category }) =>
+const GridItem = ({ id, name, alias, photos, rating, price, isOpen, category }) =>
   <li className='item'>
     <Photo name={name} url={photos[0]} />
     
     <h4 className='name'>{name}</h4>
     
     <Rating score={rating} />
-    <BusinessDetails price={price} isClosed={isClosed} category={category} />
+    <BusinessDetails price={price} isOpen={isOpen} category={category} />
     <LearnMore to={`${alias}/${id}`} />
 
     <style jsx>{`
