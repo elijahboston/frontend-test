@@ -12,15 +12,6 @@ export const gridItemData = {
   ],
   "rating": 4.5,
   "price": "$$",
-  "categories": [
-    {
-      "title": "Southern",
-      "alias": "southern"
-    },
-    {
-      "title": "American (New)",
-      "alias": "newamerican"
-    }
-  ],
-  "is_closed": false // eslint-disable-line camelcase
+  "category": "American (New)",
+  "isClosed": false // eslint-disable-line camelcase
 };
