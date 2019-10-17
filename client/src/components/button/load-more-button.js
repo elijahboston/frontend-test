@@ -14,10 +14,10 @@ const LoadMoreButton = ({ children, onClick }) => {
       <style jsx>{buttonStyle}</style>
       <style jsx>{`
         .button {
+          margin: 3rem 0 5rem 0;
           cursor: pointer;
           color: ${theme.primary};
           border: 1px solid ${theme.primary};
-          margin-bottom: 5rem;
           width: 20rem;
         }
       `}</style>

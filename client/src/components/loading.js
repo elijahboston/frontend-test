@@ -11,6 +11,7 @@ const Loading = ({ isFullScreen }) =>
         display: flex;
         justify-content: center;
         align-items: center;
+        align-self: center;
         position: ${isFullScreen ? 'absolute' : 'relative'};
         width: 100%;
         height: 100%;
