@@ -15,3 +15,10 @@ export const gridItemData = {
   "category": "American (New)",
   "isClosed": false
 };
+
+export const filterOptions = [
+  { title: '$', alias: 1 },
+  { title: '$$', alias: 2 },
+  { title: '$$$', alias: 3 },
+  { title: '$$$$', alias: 4 },
+];

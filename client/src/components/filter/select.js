@@ -24,9 +24,9 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
   const theme = useContext(ThemeContext);
 
   return (
-    <FilterSection onClick={onClick}>
+    <FilterSection>
       <div className='select'>
-        <div className='title'>
+        <div className='title' onClick={onClick}>
           <span>{label}</span>
           <Icon>
             <CaretDown />
@@ -73,6 +73,7 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
           display: flex;
           justify-content: space-between;
           align-items: center;
+          cursor: pointer;
         }
       `}</style>
     </FilterSection>

@@ -13,7 +13,7 @@ const FilterSection = ({ children, onClick }) => {
       {children}
       <style jsx>{`
         .filter-section {
-          cursor: pointer;
+          cursor: ${onClick ? 'pointer' : 'inherit'};
           display: flex;
           align-items: center;
           justify-content: space-between;

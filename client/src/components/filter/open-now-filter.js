@@ -18,6 +18,7 @@ const OpenNowFilter = ({ isChecked, onClick }) => {
       <span>Open Now</span>
       <style jsx>{`
         .open-now-toggle {
+          cursor: pointer;
           width: 1rem;
           height: 1rem;
           margin:0 .5rem 0 0;

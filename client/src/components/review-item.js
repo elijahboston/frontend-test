@@ -51,7 +51,7 @@ const ReviewItem = ({ name, date, text, picture, rating }) =>
 ReviewItem.propTypes = {
   name: PropTypes.string,
   date: PropTypes.string,
-  body: PropTypes.string,
+  text: PropTypes.string,
   picture: PropTypes.string,
   rating: PropTypes.number
 };
@@ -59,7 +59,7 @@ ReviewItem.propTypes = {
 ReviewItem.defaultProps = {
   name: 'Jane Doe',
   date: '10/2/19',
-  body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum orci nec nisi efficitur faucibus. \
+  text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum orci nec nisi efficitur faucibus. \
   Quisque sit amet arcu ac erat pharetra tempus at id augue. Aliquam erat volutpat. Nullam dignissim nec quam \
   suscipit consequat. Curabitur a urna sit amet dolor cursus semper. Vivamus vitae massa nulla. Fusce ut dolor dolor. \
   Quisque eget auctor augue. In condimentum mauris eu consequat tempor. Suspendisse vel commodo nulla, eu venenatis nibh. \

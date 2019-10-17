@@ -1,24 +1,16 @@
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
+import React, { useContext } from 'react';
+import { filterOptions } from '../../storybook-helpers/_mock-data';
+import { AppProvider } from '../../contexts';
 import Filter from './filter';
 
-const stories = storiesOf('Filter', module);
-
-stories.addDecorator(withKnobs);
-
-const filterOptions = [
-  { label: 'All', value: 'All' },
-  { label: '$', value: '$' },
-  { label: '$$', value: '$$' },
-  { label: '$$$', value: '$$$' },
-];
+export default { title: 'Filter' };
 
 const categoryOptions = [
-  { label: 'Sushi', value: 'Sushi' },
-  { label: 'Burgers', value: 'Burgers' },
+  { title: 'Sushi', alias: 'Sushi' },
+  { title: 'Burgers', alias: 'Burgers' },
 ];
 
-stories.add('Default', () => (
-  <Filter priceOptions={filterOptions} categoryOptions={categoryOptions} />
-));
+export const withContent = () =>
+  <AppProvider>
+    <Filter priceOptions={filterOptions} categoryOptions={categoryOptions} />
+  </AppProvider>;

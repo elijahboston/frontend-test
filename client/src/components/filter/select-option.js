@@ -18,6 +18,7 @@ const SelectOption = ({ title, alias, isSelected, toggleOption }) => {
       <span>{title}</span>
       <style jsx>{`
         li {
+          font-size: .9rem;
           display: flex;
           padding: .5rem 1rem;
           justify-content: flex-start;
@@ -34,7 +35,7 @@ const SelectOption = ({ title, alias, isSelected, toggleOption }) => {
           display: flex;
           border-radius: 20rem;
           background: #fff;
-          border: 1px solid ${isSelected ? 'transparent' : theme.lightBorder};
+          border: 1px solid ${isSelected ? 'transparent' : theme.borderLight};
           margin-right: .5rem;
         }
       `}</style>
