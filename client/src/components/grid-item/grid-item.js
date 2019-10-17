@@ -5,14 +5,14 @@ import BusinessDetails from '../business-details';
 import Photo from './photo';
 import LearnMore from './learn-more';
 
-const GridItem = ({ id, name, alias, photos, rating, price, isClosed, categories }) =>
+const GridItem = ({ id, name, alias, photos, rating, price, isClosed, category }) =>
   <li className='item'>
     <Photo name={name} url={photos[0]} />
     
     <h4 className='name'>{name}</h4>
     
     <Rating score={rating} />
-    <BusinessDetails price={price} isClosed={isClosed} category={categories[0]} />
+    <BusinessDetails price={price} isClosed={isClosed} category={category} />
     <LearnMore to={`${alias}/${id}`} />
 
     <style jsx>{`
@@ -31,7 +31,7 @@ GridItem.propTypes = {
   rating: PropTypes.number,
   price: PropTypes.string,
   isClosed: PropTypes.bool,
-  categories: PropTypes.array
+  category: PropTypes.string
 };
 
 GridItem.defaultProps = {
@@ -42,7 +42,7 @@ GridItem.defaultProps = {
   rating: 5,
   price: '$',
   isClosed: false,
-  categories: []
+  category: ''
 };
 
 export default GridItem;
