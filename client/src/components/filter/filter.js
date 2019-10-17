@@ -14,6 +14,7 @@ const Filter = ({ priceOptions, categoryOptions }) => {
     categoriesSelected,
     setPricesSelected,
     setCategoriesSelected,
+    setOpenNow,
     toggleOpenNow,
     togglePriceSelect,
     toggleCategorySelect
@@ -25,6 +26,8 @@ const Filter = ({ priceOptions, categoryOptions }) => {
   const [categorySelect, setCategorySelect] = useState(false);
 
   const clearAll = () => {
+    setOpenNow(false);
+    
     // close menus
     setPriceSelect(false);
     setCategorySelect(false);

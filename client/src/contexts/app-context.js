@@ -25,6 +25,7 @@ export const AppProvider = ({ children }) => {
     categoriesSelected,
     setCategoriesSelected,
     setPricesSelected,
+    setOpenNow,
     toggleOpenNow: () =>
       setOpenNow(!openNow),
     togglePriceSelect: (price) =>
