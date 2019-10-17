@@ -1,3 +1,12 @@
+## Setup
+1. Run `npm i` to install required packages.
+2. Create a .env file within `/client`, with the following value:
+```
+GRAPHQL_API_KEY="<YOUR-YELP-API-KEY>"
+```
+
+You should now be able to use any of the package commands.
+
 ## Usage
 Use `npm run [script]` or `yarn [script]` to run the following project scripts:
 
