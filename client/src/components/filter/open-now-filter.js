@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import ThemeContext from '../../contexts/theme-context';
+import { ThemeContext } from '../../contexts';
 import FilterSection from './filter-section';
 import Dot from '../svg/dot';
 
@@ -22,7 +22,7 @@ const OpenNowFilter = ({ isChecked, onClick }) => {
           height: 1rem;
           margin:0 .5rem 0 0;
           background-color: white;
-          border: 1px solid #ccc;
+          border: 1px solid ${theme.borderLight};
           border-radius: 20rem;
 
           display: flex;

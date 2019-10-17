@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { ThemeContext } from '../../contexts';
 import FilterSection from './filter-section';
 import SelectOption from './select-option';
 import CaretDown from '../svg/caret-down.svg';
@@ -19,6 +20,9 @@ Icon.defaultProps = {
 
 // Select is a custom dropdown selector
 const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidth, onClick }) => {
+  
+  const theme = useContext(ThemeContext);
+
   return (
     <FilterSection onClick={onClick}>
       <div className='select'>
@@ -62,7 +66,7 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
           margin: 0;
           padding: .5rem 0;
           background: #fff;
-          border: 1px solid #C8C8C8;
+          border: 1px solid ${theme.borderLight};
         }
 
         .title {

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Check from '../svg/check.svg';
+import { ThemeContext } from '../../contexts';
 
 const SelectOption = ({ title, alias, isSelected, toggleOption }) => {
+  const theme = useContext(ThemeContext);
+  
   const onClick = () => {
     toggleOption(alias);
   };
@@ -31,7 +34,7 @@ const SelectOption = ({ title, alias, isSelected, toggleOption }) => {
           display: flex;
           border-radius: 20rem;
           background: #fff;
-          border: 1px solid ${isSelected ? 'transparent' : '#ccc'};
+          border: 1px solid ${isSelected ? 'transparent' : theme.lightBorder};
           margin-right: .5rem;
         }
       `}</style>

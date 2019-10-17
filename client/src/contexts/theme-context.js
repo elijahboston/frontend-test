@@ -9,7 +9,8 @@ const theme = {
   open: '#00E8A4',
   closed: '#FF3548',
   fontLight: '#757575',
-  borderLight: '#C8C8C8'
+  borderLight: '#C8C8C8',
+  errorBackground: '#fbd1d1'
 };
 
 export const ThemeProvider = ({ children }) =>
