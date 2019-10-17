@@ -1,4 +1,5 @@
 const merge = require('webpack-merge');
+const Dotenv = require('dotenv-webpack');
 const WebpackDashboard = require('webpack-dashboard/plugin');
 const defaultConfig = require('./webpack.config');
 
@@ -6,6 +7,7 @@ module.exports = merge(defaultConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
   plugins: [
+    new Dotenv(),
     new WebpackDashboard()
   ],
   devServer: {

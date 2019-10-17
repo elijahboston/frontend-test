@@ -12,7 +12,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
-    new Dotenv(),
     new HtmlWebpackPlugin({
       title: 'Yelp App',
       template: './public/index.html'
