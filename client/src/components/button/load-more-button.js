@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { ThemeContext } from '../../contexts';
 import buttonStyle from './button.style';
 
+// LoadMoreButton uses the base Button styling
+// and applies a few adjustments
 const LoadMoreButton = ({ children, onClick }) => {
   const theme = useContext(ThemeContext);
 
@@ -12,6 +14,7 @@ const LoadMoreButton = ({ children, onClick }) => {
       <style jsx>{buttonStyle}</style>
       <style jsx>{`
         .button {
+          cursor: pointer;
           color: ${theme.primary};
           border: 1px solid ${theme.primary};
           margin-bottom: 5rem;
@@ -23,12 +26,12 @@ const LoadMoreButton = ({ children, onClick }) => {
 };
 
 LoadMoreButton.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.any,
   onClick: PropTypes.func,
 }
 
 LoadMoreButton.defaultProps = {
-  children: {},
+  children: 'Load More',
   onClick: () => {}
 }
 

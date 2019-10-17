@@ -12,6 +12,7 @@ const Button = ({ children, onClick }) => {
       <style jsx>{buttonStyle}</style>
       <style jsx>{`
         .button {
+          cursor: pointer;
           color: ${theme.primary};
           border: 1px solid ${theme.primary};
         }
@@ -21,12 +22,12 @@ const Button = ({ children, onClick }) => {
 };
 
 Button.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.string,
   onClick: PropTypes.func,
 }
 
 Button.defaultProps = {
-  children: {},
+  children: 'Button',
   onClick: () => {}
 }
 
