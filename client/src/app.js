@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router } from '@reach/router';
-import { MainView, DetailView } from './views';
+import { HomePage, DetailPage } from './pages';
 import { ThemeProvider, AppProvider } from './contexts';
 import apolloClient from './helpers/apollo-client';
 import { ApolloProvider } from 'react-apollo';
@@ -12,8 +12,8 @@ const App = () => {
         <AppProvider>
           <ThemeProvider>
             <Router>
-              <DetailView path="/:slug/:id" />
-              <MainView path="/" />
+              <DetailPage path="/:slug/:id" />
+              <HomePage path="/" />
             </Router>
           </ThemeProvider>
         </AppProvider>
