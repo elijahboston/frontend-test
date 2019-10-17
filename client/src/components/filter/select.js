@@ -51,6 +51,8 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
         }
 
         ul.dropdown {
+          overflow: scroll;
+          max-height: 20rem;
           width: 100%;
           position: absolute;
           top: .5rem;
