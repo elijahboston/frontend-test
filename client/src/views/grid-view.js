@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Loading, Grid, GridItem } from '../components';
+import { Loading, Grid, GridItem, LoadMoreButton, APIError } from '../components';
 import { useQuery } from '@apollo/react-hooks';
 import { SEARCH_QUERY } from '../queries';
 
-// SearchView handles fetching and updating search results
-const SearchView = ({ categories, price, isOpen }) => {
+// GridView handles fetching and updating search results
+const GridView = ({ categories, price, isOpen }) => {
   const queryParams = {
     categories: categories.join(','),
     price: price.join(','),
@@ -24,7 +24,7 @@ const SearchView = ({ categories, price, isOpen }) => {
     },
   );
 
-  if (error) return (<div>{error}</div>);
+  if (error) return (<APIError error={error} />);
 
   const initData = {
     search: {
@@ -41,51 +41,60 @@ const SearchView = ({ categories, price, isOpen }) => {
     }
   } = !data ? initData : data;
 
+  const onLoadMore = () =>
+    fetchMore({
+      variables: {
+        offset: items.length
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        // update state by merging search results
+        if (!fetchMoreResult) {
+          setHasMoreResults(false);
+          return prev;
+        }
+        return Object.assign({}, prev, {
+          search: {
+            __typename: 'Businesses',
+            business: [...prev.search.business, ...fetchMoreResult.search.business]
+          }
+        });
+      }
+    });
+
   return (
     <div className='grid-view'>
-      <Grid 
-        rows={items.length > 0 ? (items.length / 4) : 0}
-        hasMoreResults={hasMoreResults}
-        onLoadMore={() =>
-          fetchMore({
-            variables: {
-              offset: items.length
-            },
-            updateQuery: (prev, { fetchMoreResult }) => {
-              // update state by merging search results
-              if (!fetchMoreResult) {
-                setHasMoreResults(false);
-                return prev;
-              }
-              return Object.assign({}, prev, {
-                search: {
-                  __typename: 'Businesses',
-                  business: [...prev.search.business, ...fetchMoreResult.search.business]
-                }
-              });
-            }
-          })
-        }>
+      <Grid rows={items.length > 0 ? (items.length / 4) : 0}>
         {items.map(item => {
           const category = item.categories[0].title;
           return (<GridItem key={item.id} { ...item } category={category} isOpen={!item.is_closed} />);
         })}
-        {loading && <Loading />}
       </Grid>
+
+      {loading && <Loading />}
+
+      <div className='load-more'>
+        {hasMoreResults && <LoadMoreButton onClick={onLoadMore}>Load More</LoadMoreButton>}
+      </div>
+      <style jsx>{`
+        .load-more {
+          display: flex;
+          justify-content: center;
+        }
+      `}</style>
     </div>
   );
 }
 
-SearchView.propTypes = {
+GridView.propTypes = {
   categories: PropTypes.array,
   price: PropTypes.array,
   isOpen: PropTypes.bool
 }
 
-SearchView.defaultProps = {
+GridView.defaultProps = {
   categories: [],
   price: [],
   isOpen: false
 }
 
-export default SearchView;
+export default GridView;
