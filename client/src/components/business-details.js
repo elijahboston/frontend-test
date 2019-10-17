@@ -6,7 +6,7 @@ const BusinessDetails = ({ category, price, isClosed }) =>
   <div className='details'>
     <div className='left'>
       <span className='category'>
-        {category.title}
+        {category}
       </span>
       <span className='price'>
         {price}
