@@ -1,3 +1,9 @@
 [[redirects]]
-  from = "/"
-  to = "/index.html"
+  from = "/api"
+  to = "https://api.yelp.com/v3/graphql"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "index.html"
+  status = 200
