@@ -1,7 +1,7 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
-import '../src/storybook-helpers/global.css';
-import { AppProvider, ThemeProvider } from '../src/contexts';
+import { ThemeProvider } from '../src/contexts';
+import '../src/css/global.css';
 
 addDecorator(storyFn => <ThemeProvider>{storyFn()}</ThemeProvider>);
 
