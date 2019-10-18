@@ -3,4 +3,4 @@ dist/
 .cache
 .DS_Store
 .env
-client/functions
+client/src/functions/
