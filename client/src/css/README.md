@@ -1,0 +1,1 @@
+Storybook is a little funny when it comes to handling Styled JSX global styles, so we just use a plain CSS file and import it within the app and `.storybook/config.js`.
