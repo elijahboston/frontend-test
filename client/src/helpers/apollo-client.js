@@ -5,7 +5,7 @@ const client = new ApolloClient({
   request: (operation) => {
     operation.setContext({
       headers: {
-        Authorization: `Bearer ${process.env.GRAPHQL_API_KEY}`,
+        Authorization: `Bearer ${process.env.API_TOKEN}`,
         'Accept-Language': 'en_US'
       }
     });
