@@ -19,6 +19,12 @@ const CenterContent = ({ children }) =>
         width: 100%;
         max-width: 980px;
       }
+
+      @media only screen and (max-width: 980px) {
+        .container {
+          margin: 0 1rem;
+        }
+      }
     `}</style>
   </div>
 

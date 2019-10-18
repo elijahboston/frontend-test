@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { useTransition, config, animated } from 'react-spring';
+import { useTransition, animated } from 'react-spring';
 import { ThemeContext } from '../../contexts';
 import FilterSection from './filter-section';
 import SelectOption from './select-option';
@@ -55,13 +55,13 @@ const DropDown = ({ options, selectedOptions, toggleOption }) => {
 }
 
 DropDown.propTypes = {
-  styleProps: PropTypes.object,
+  selectedOptions: PropTypes.array,
   options: PropTypes.array,
   toggleOption: PropTypes.func
 }
 
 DropDown.defaultProps = {
-  styleProps: '',
+  selectedOptions: [],
   options: [],
   toggleOption: () => {}
 }
@@ -98,7 +98,7 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
 
         <div className='dropdown-container'>
           {transitions.map(({ item, key, props }) =>
-            item && <animated.div style={props}>
+            item && <animated.div style={props} key={key}>
               <DropDown
                 options={options}
                 toggleOption={toggleOption}
@@ -143,6 +143,7 @@ Select.propTypes = {
   toggleOption: PropTypes.func,
   isOpen: PropTypes.bool,
   minWidth: PropTypes.number,
+  height: PropTypes.number,
   onClick: PropTypes.func
 }
 
@@ -153,6 +154,7 @@ Select.defaultProps = {
   toggleOption: () => {},
   isOpen: false,
   minWidth: 6,
+  height: 10,
   onClick: () => {}
 }
 

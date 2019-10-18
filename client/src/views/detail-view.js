@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Loading, APIError } from '../components';
 import { useQuery } from '@apollo/react-hooks';
 import {
@@ -56,6 +57,14 @@ const DetailView = ({ id }) => {
       `}</style>
     </main>
   )
+}
+
+DetailView.propTypes = {
+  id: PropTypes.string
+}
+
+DetailView.defaultProps = {
+  id: ''
 }
 
 export default DetailView;

@@ -118,6 +118,20 @@ const Filter = ({ priceOptions, categoryOptions }) => {
           .open-now {
             border-bottom: 1px solid blue;
           }
+
+          @media only screen and (max-width: 760px) {
+              .filter {
+                flex-direction: column;
+                width: 100%;
+              }
+
+              .right {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin: 1rem 0 0 0;
+              }
+          }
         `}</style>
       </nav>
     </CenterContent>

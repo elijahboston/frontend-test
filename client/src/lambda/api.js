@@ -1,8 +1,7 @@
 const axios = require('axios');
 
+// Lambda that acts as a GraphQL proxy
 exports.handler = function(event, context, callback) {
-  // Get env var values defined in our Netlify site
-  const { API_TOKEN, API_URL } = process.env;
 
   // Handle response
   const res = (body, status=200) => {
@@ -17,6 +16,9 @@ exports.handler = function(event, context, callback) {
   }
 
   const post = () => {
+    // Get env var values defined in our Netlify site
+    const { API_TOKEN, API_URL } = process.env;
+    
     console.log('API URL:', API_URL);
     console.log('Event Body:', event.body);
   
@@ -36,7 +38,7 @@ exports.handler = function(event, context, callback) {
     .catch(err => res(err, 500))
   }
 
-  if(event.httpMethod == 'POST'){
+  if(event.httpMethod === 'POST'){
     post()
   };
 };

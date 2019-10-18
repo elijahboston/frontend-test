@@ -39,7 +39,7 @@ const GridView = ({ categories, price, isOpen }) => {
     search: {
       business: items
     }
-  } = !data ? initData : data;
+  } = data ? data : initData;
 
   const onLoadMore = () =>
     fetchMore({
@@ -68,13 +68,16 @@ const GridView = ({ categories, price, isOpen }) => {
           const category = item.categories[0].title;
           return (<GridItem key={item.id} { ...item } category={category} isOpen={!item.is_closed} />);
         })}
+        {!loading && items.length === 0 && <div className='no-results'>
+          No restaurants could be found matching your criteria.
+        </div>}
       </Grid>
 
       {loading && <Loading />}
 
-      <div className='load-more'>
-        {hasMoreResults && <LoadMoreButton onClick={onLoadMore}>Load More</LoadMoreButton>}
-      </div>
+      {!!(hasMoreResults && items.length > 0) && <div className='load-more'>
+        <LoadMoreButton onClick={onLoadMore}>Load More</LoadMoreButton>
+      </div>}
       <style jsx>{`
         .load-more {
           display: flex;
