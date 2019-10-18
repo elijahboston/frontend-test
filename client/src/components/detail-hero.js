@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CenterContent from './center-content';
 import DetailPhoto from './detail-photo';
-const placeholderImg = 'https://picsum.photos/640/228';
 
-const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+// Google Maps requires including the API key in the embed
+// so not much use abstracting it
+const GOOGLE_MAPS_API_KEY = 'AIzaSyAgH5gPqe9jZQDN7QwYR1sBOf3N1DbN7uQ';
 
 const DetailHero = ({ name, address, photos }) =>
   <section className='detail-hero'>
