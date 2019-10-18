@@ -34,7 +34,7 @@ const ReviewItem = ({ name, date, text, picture, rating }) =>
       }
 
       .user-profile {
-        min-width: 20rem;
+        min-width: 16rem;
         display: flex;
       }
 
