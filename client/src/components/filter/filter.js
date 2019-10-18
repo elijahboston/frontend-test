@@ -50,6 +50,7 @@ const Filter = ({ priceOptions, categoryOptions }) => {
               toggleOption={togglePriceSelect}
               options={priceOptions}
               isOpen={priceSelect}
+              height={9}
               onClick={() => {
                 // close category menu if open
                 setCategorySelect(false);
@@ -58,6 +59,7 @@ const Filter = ({ priceOptions, categoryOptions }) => {
 
             <Select label='Categories'
               minWidth={10}
+              height={20}
               options={categoryOptions.map(category => {
                 const { title } = category;
                 // Replace non-characters to infer the alias
