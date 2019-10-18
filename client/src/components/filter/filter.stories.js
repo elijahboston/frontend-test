@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { filterOptions } from '../../storybook-helpers/_mock-data';
 import { AppProvider } from '../../contexts';
 import Filter from './filter';

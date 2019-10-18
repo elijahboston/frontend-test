@@ -39,7 +39,7 @@ const GridView = ({ categories, price, isOpen }) => {
     search: {
       business: items
     }
-  } = !data ? initData : data;
+  } = data ? data : initData;
 
   const onLoadMore = () =>
     fetchMore({

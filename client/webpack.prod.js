@@ -1,5 +1,4 @@
 const merge = require('webpack-merge');
-const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const defaultConfig = require('./webpack.config');
 

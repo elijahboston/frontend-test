@@ -9,8 +9,8 @@ const APIError = ({ error }) => {
     <div className='error'>
       <div className='error-prompt'>
         <h3>API Error</h3>
-        {error.graphQLErrors.map(({ message }, i) => (
-          <span key={i}>{message}</span>
+        {error.graphQLErrors.map(({ message }) => (
+          <span key={message}>{message}</span>
         ))}
       </div>
       <style jsx>{`
@@ -32,11 +32,13 @@ const APIError = ({ error }) => {
 }
 
 APIError.propTypes = {
-  errors: PropTypes.array,
+  error: PropTypes.any,
 };
 
 APIError.defaultProps = {
-  errors: []
+  error: {
+    graphQLErrors: () => ([])
+  }
 };
 
 export default APIError;
