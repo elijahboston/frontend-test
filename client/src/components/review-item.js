@@ -2,13 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Rating from './rating';
 
+const parseDate = (date) => {
+  const parsed = new Date(date);
+  const day = parsed.getDate();
+  const month = parsed.getMonth() + 1;
+  const year = parsed.getFullYear();
+
+  return `${day}/${month}/${year}`;
+}
+
 const ReviewItem = ({ name, date, text, picture, rating }) =>
   <li className='review'>
     <div className='user-profile'>
       <div className='profile-picture'></div>
       <div className='user'>
         <div className='name'>{name}</div>
-        <div className='review-date'>{date}</div>
+        <div className='review-date'>{parseDate(date)}</div>
       </div>
     </div>
     <div className='review-content'>

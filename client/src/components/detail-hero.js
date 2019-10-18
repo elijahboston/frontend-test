@@ -2,13 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CenterContent from './center-content';
 import DetailPhoto from './detail-photo';
-const placeholderImg = 'https://picsum.photos/640/228';
+
+// Google Maps requires including the API key in the embed
+// so not much use abstracting it
+const GOOGLE_MAPS_API_KEY = 'AIzaSyAgH5gPqe9jZQDN7QwYR1sBOf3N1DbN7uQ';
 
 const DetailHero = ({ name, address, photos }) =>
   <section className='detail-hero'>
     <CenterContent>
       <div className='details-hero-top'>
-        <div className='map'></div>
+        <div className='map'>
+          <iframe
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            src={`https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}
+              &q=${encodeURIComponent(address)}`} allowFullscreen>
+          </iframe>
+        </div>
 
         <div className='photos'>
           {photos && photos.map(src => <DetailPhoto key={src} name={name} url={src} />)}
@@ -33,7 +44,6 @@ const DetailHero = ({ name, address, photos }) =>
       .map {
         width: 50%;
         height: 100%;
-        background: url(${placeholderImg}) no-repeat;
       }
 
       .photos {
