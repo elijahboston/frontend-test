@@ -22,7 +22,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /storybook-helpers/],
         use: {
           loader: 'babel-loader'
         }
@@ -39,7 +39,12 @@ module.exports = {
             icon: true,
           },
         }],
-      }
+      },
+      // CSS
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ]
   }
 };

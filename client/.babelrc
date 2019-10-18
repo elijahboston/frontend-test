@@ -1,6 +1,6 @@
 {
   "plugins": [
-    "styled-jsx/babel"
+    ["styled-jsx/babel", { "optimizeForSpeed": true }]
   ],
   "presets": [
     "@babel/preset-react",
