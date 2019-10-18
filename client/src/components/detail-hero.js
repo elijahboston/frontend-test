@@ -4,7 +4,7 @@ import CenterContent from './center-content';
 import DetailPhoto from './detail-photo';
 const placeholderImg = 'https://picsum.photos/640/228';
 
-const GOOGLE_MAPS_API_KEY = '';
+const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
 const DetailHero = ({ name, address, photos }) =>
   <section className='detail-hero'>
