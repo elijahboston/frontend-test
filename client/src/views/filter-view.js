@@ -4,7 +4,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { CATEGORIES_QUERY } from '../queries';
 
 const priceOptions = [
-  { title: 'All', alias: 0 },
   { title: '$', alias: 1 },
   { title: '$$', alias: 2 },
   { title: '$$$', alias: 3 },
