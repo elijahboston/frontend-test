@@ -18,12 +18,12 @@ const RepeatComponent = ({ children, n }) => {
 }
 
 RepeatComponent.propTypes = {
-  component: PropTypes.any,
+  children: PropTypes.any,
   n: PropTypes.number
 }
 
 RepeatComponent.defaultProps = {
-  component: null,
+  children: null,
   n: 0
 }
 
