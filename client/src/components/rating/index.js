@@ -1,21 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FullStar from '../svg/full-star.svg';
-import HalfStar from '../svg/half-star.svg';
-import EmptyStar from '../svg/empty-star.svg';
 
 // Helper component to return multiple instances of a component
-const RepeatComponent = ({ component, n }) => {
+const RepeatComponent = ({ children, n }) => {
   const components = [];
   for (let i = 0; i < n; i++) {
-    components.push(component);
+    components.push(children);
   }
 
   // The math statement below lets us
   // generate a hash for our key names
   return (
     <React.Fragment>
-      {components.map(Component => <Component key={Math.random().toString(36)}/>)}
+      {[...Array(n)].map(() => children)}
     </React.Fragment>
   )
 }
@@ -43,14 +40,15 @@ const Rating = ({ score }) => {
 
   return (
     <div className='rating'>
-      <RepeatComponent component={FullStar} n={fullStarCount} />
-      <RepeatComponent component={HalfStar} n={halfStarCount} />
-      <RepeatComponent component={EmptyStar} n={emptyStarCount} />
-      <style jsx>{`
-        .rating {
-          font-family: 'icons';
-        }
-      `}</style>
+      <RepeatComponent n={fullStarCount}>
+        <i className='icon icon-full-star'></i>
+      </RepeatComponent>
+      <RepeatComponent n={halfStarCount}>
+        <i className='icon icon-half-star'></i>
+      </RepeatComponent>
+      <RepeatComponent n={emptyStarCount}>
+        <i className='icon icon-empty-star'></i>
+      </RepeatComponent>
     </div>
   );
 }
