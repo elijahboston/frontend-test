@@ -4,20 +4,6 @@ import { useTransition, animated } from 'react-spring';
 import { ThemeContext } from '../../contexts';
 import FilterSection from './filter-section';
 import SelectOption from './select-option';
-import CaretDown from '../svg/caret-down.svg';
-
-const Icon = ({ children }) => 
-  <span className='icon'>
-    {children}
-  </span>;
-
-Icon.propTypes = {
-  children: PropTypes.object
-}
-
-Icon.defaultProps = {
-  children: {}
-}
 
 const DropDown = ({ options, selectedOptions, toggleOption }) => {
   const theme = useContext(ThemeContext);
@@ -91,9 +77,8 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
       <div className='select'>
         <div className='title' onClick={onClick}>
           <span>{label}</span>
-          <Icon>
-            <CaretDown />
-          </Icon>
+          {!isOpen && <i className='icon icon-caret-down'></i>}
+          {!!isOpen && <i className='icon icon-caret-up'></i>}
         </div>
 
         <div className='dropdown-container'>
@@ -107,6 +92,10 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
         </div>
       </div>
       <style jsx>{`
+        .icon {
+          font-size: .5rem;
+        }
+
         .select {
           min-width: ${minWidth}rem;
         }
