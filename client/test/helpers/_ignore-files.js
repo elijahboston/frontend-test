@@ -1,2 +1,3 @@
 import requireHacker from 'require-hacker';
-requireHacker.hook('svg', () => 'module.exports = ""');
+// replace svg imports with an empty <svg> tag
+requireHacker.hook('svg', () => 'module.exports = "svg"');
