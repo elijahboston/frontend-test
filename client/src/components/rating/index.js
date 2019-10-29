@@ -1,21 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Helper component to return multiple instances of a component
-const RepeatComponent = ({ children, n }) => {
-  const components = [];
-  for (let i = 0; i < n; i++) {
-    components.push(children);
-  }
-
-  // The math statement below lets us
-  // generate a hash for our key names
-  return (
-    <React.Fragment>
-      {[...Array(n)].map(() => children)}
-    </React.Fragment>
-  )
-}
+// Helper component to return multiple instances of the wrapped children
+const RepeatComponent = ({ children, n }) =>
+  <React.Fragment>
+    {[...Array(n)].map(() => children)}
+  </React.Fragment>;
 
 RepeatComponent.propTypes = {
   children: PropTypes.any,
