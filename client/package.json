@@ -88,6 +88,9 @@
     "parser": "babel-eslint",
     "plugins": [
       "react"
+    ],
+    "ignores": [
+      "src/functions/**"
     ]
   },
   "ava": {
