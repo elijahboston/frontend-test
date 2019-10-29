@@ -5,9 +5,9 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-import Grid from '../src/components/grid';
+import { Grid } from '../src/components';
 
-test('should render without items', t => {
-    const wrapper = shallow(<Grid />,);
+test('<Grid /> should render without props', t => {
+    const wrapper = shallow(<Grid />);
     t.is(wrapper.find('div').length, 1);
 });
