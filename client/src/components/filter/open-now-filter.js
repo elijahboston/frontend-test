@@ -16,6 +16,10 @@ const OpenNowFilter = ({ isChecked, onClick }) => {
       </div>
       <span>Open Now</span>
       <style jsx>{`
+        span {
+          user-select: none;
+          color: ${theme.primary};
+        }
         .icon {
           color: white;
           font-size: 1rem;
@@ -26,7 +30,7 @@ const OpenNowFilter = ({ isChecked, onClick }) => {
           height: 1rem;
           margin:0 .5rem 0 0;
           background-color: ${isChecked ? 'black' : 'white'};
-          border: 1px solid ${theme.borderLight};
+          border: 1px solid ${isChecked ? 'transparent' : theme.borderLight};
           border-radius: 20rem;
 
           display: flex;
