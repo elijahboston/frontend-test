@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const CopyPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const defaultConfig = require('./webpack.config');
 
 module.exports = merge(defaultConfig, {
@@ -8,5 +9,6 @@ module.exports = merge(defaultConfig, {
     new CopyPlugin([
       { from: 'netlify.toml', to: 'netlify.toml' },
     ]),
+    new CompressionPlugin()
   ],
 });
