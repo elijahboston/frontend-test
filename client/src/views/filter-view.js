@@ -25,7 +25,7 @@ const FilterView = () => {
     }
   } = data;
 
-  // filter out non-restaurants
+  // filter out non-restaurant categories
   // based on parent category
   const categoryOptions = allCategories
     .filter(category => category.parent_categories
