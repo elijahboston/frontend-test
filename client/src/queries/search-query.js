@@ -8,6 +8,7 @@ const SEARCH_QUERY = gql`
         alias
         name
         price
+        rating
         categories {
           title
           alias

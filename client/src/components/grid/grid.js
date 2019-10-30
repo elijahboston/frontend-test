@@ -14,7 +14,7 @@ const Grid = ({ children, rows }) =>
         margin: 0;
         list-style-type: none;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+        grid-template-columns: repeat(auto-fit, 14rem);
         grid-template-rows: repeat(${rows}, 20rem);
         grid-gap: 1rem;
         grid-auto-flow: dense;

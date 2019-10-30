@@ -29,7 +29,7 @@ test('"Open Now" toggle should display icon when clicked', t => {
     
     wrapper.find('.open-now-toggle').simulate('click');
 
-    t.is(wrapper.find('.open-now-toggle svg').length, 1);
+    t.is(wrapper.find('.open-now-toggle i').length, 1);
 });
 
 test('Dropdown is visible after clicking <Select> title', t => {
@@ -56,5 +56,5 @@ test('<Select> displays checkmark after selecting an option in the dropdown', t 
     wrapper.find('.title').first().simulate('click');
     wrapper.find('ul li').at(2).simulate('click');
     
-    t.is(wrapper.find('ul li').at(2).find('svg').length, 1, 'Checkmark not displayed');
+    t.is(wrapper.find('ul li').at(2).find('i').length, 1, 'Checkmark not displayed');
 });

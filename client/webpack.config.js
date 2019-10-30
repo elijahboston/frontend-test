@@ -1,4 +1,5 @@
 const path = require('path');
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -14,7 +15,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Yelp App',
       template: './public/index.html'
-    })
+    }),
+    // Uncomment to launch Bundle Analyzer after build
+    //new BundleAnalyzerPlugin()
   ],
   module: {
     // React JS/JSX
@@ -26,18 +29,18 @@ module.exports = {
           loader: 'babel-loader'
         }
       },
-      // SVG
+      // fonts
       {
-        test: /\.svg$/,
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: '@svgr/webpack',
+            loader: 'file-loader',
             options: {
-            // set width/height of svg to 1em,
-            // so its size inherits from font size
-            icon: true,
-          },
-        }],
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
       },
       // CSS
       {

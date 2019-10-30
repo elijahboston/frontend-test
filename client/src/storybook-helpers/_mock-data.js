@@ -13,7 +13,7 @@ export const gridItemData = {
   "rating": 4.5,
   "price": "$$",
   "category": "American (New)",
-  "isClosed": false
+  "isOpen": false
 };
 
 export const filterOptions = [

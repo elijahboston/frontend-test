@@ -3,71 +3,11 @@ import PropTypes from 'prop-types';
 import { useTransition, animated } from 'react-spring';
 import { ThemeContext } from '../../contexts';
 import FilterSection from './filter-section';
-import SelectOption from './select-option';
-import CaretDown from '../svg/caret-down.svg';
-
-const Icon = ({ children }) => 
-  <span className='icon'>
-    {children}
-  </span>;
-
-Icon.propTypes = {
-  children: PropTypes.object
-}
-
-Icon.defaultProps = {
-  children: {}
-}
-
-const DropDown = ({ options, selectedOptions, toggleOption }) => {
-  const theme = useContext(ThemeContext);
-
-  return(
-    <ul className='dropdown'>
-      {options.map(option => {
-        const isSelected = selectedOptions && selectedOptions.includes(option.alias);
-
-        return (
-          <SelectOption key={option.title} toggleOption={toggleOption} isSelected={isSelected} { ...option } />
-        )
-      })}
-      <style jsx>{`
-        ul.dropdown {
-          height: inherit;
-          top: .5rem;
-          max-height: 20rem;
-          display: flex;
-          overflow: scroll;
-          width: 100%;
-          flex-direction: column;
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-          background: #fff;
-          border: 1px solid ${theme.borderLight};
-          -webkit-box-shadow: 0px 11px 15px -6px rgba(0,0,0,0.3);
-          -moz-box-shadow: 0px 11px 15px -6px rgba(0,0,0,0.3);
-          box-shadow: 0px 11px 15px -6px rgba(0,0,0,0.3);
-        }
-      `}</style>
-    </ul>
-  )
-}
-
-DropDown.propTypes = {
-  selectedOptions: PropTypes.array,
-  options: PropTypes.array,
-  toggleOption: PropTypes.func
-}
-
-DropDown.defaultProps = {
-  selectedOptions: [],
-  options: [],
-  toggleOption: () => {}
-}
+import Dropdown from './dropdown';
 
 // Select is a custom dropdown selector
 const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidth, height, onClick }) => {
+  const theme = useContext(ThemeContext);
   const transitions = useTransition(isOpen, null, {
     from: {
       position: 'absolute',
@@ -90,16 +30,17 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
     <FilterSection>
       <div className='select'>
         <div className='title' onClick={onClick}>
-          <span>{label}</span>
-          <Icon>
-            <CaretDown />
-          </Icon>
+          <span className='label'>{label}</span>
+          <span className='icon-container'>
+            {!isOpen && <i className='icon icon-caret-down'></i>}
+            {!!isOpen && <i className='icon icon-caret-up'></i>}
+          </span>
         </div>
 
         <div className='dropdown-container'>
           {transitions.map(({ item, key, props }) =>
             item && <animated.div style={props} key={key}>
-              <DropDown
+              <Dropdown
                 options={options}
                 toggleOption={toggleOption}
                 selectedOptions={selectedOptions} />
@@ -107,6 +48,23 @@ const Select = ({ label, options, selectedOptions, toggleOption, isOpen, minWidt
         </div>
       </div>
       <style jsx>{`
+        // We need to set parent base font size
+        // smaller than the default (16px)
+        // so the icon can be scaled down using rems
+
+        .icon-container {
+          font-size: 12px;
+        }
+
+        .icon {
+          color: ${theme.borderLight};
+          font-size: .4rem;
+        }
+
+        .label {
+          color: ${theme.primary};
+        }
+
         .select {
           min-width: ${minWidth}rem;
         }

@@ -51,6 +51,10 @@ const DetailView = ({ id }) => {
       <DetailHero name={name} photos={photos} address={formattedAddress} />
       <Reviews items={reviews} reviewCount={reviewCount} />
       <style jsx>{`
+        // Set the parent font size in px so that
+        // the <BusinessDetails /> component's size
+        // scales up
+        
         .business-details {
           font-size: 25px;
         }

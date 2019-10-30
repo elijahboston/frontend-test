@@ -8,5 +8,5 @@ const stories = storiesOf('Open Now', module);
 stories.addDecorator(withKnobs);
 
 stories.add('Default', () => (
-  <OpenNow isClosed={boolean('isClosed', false)} />
+  <OpenNow isOpen={boolean('isOpen', false)} />
 ));

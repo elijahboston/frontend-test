@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Loading, Grid, GridItem, LoadMoreButton, APIError } from '../components';
 import { useQuery } from '@apollo/react-hooks';
@@ -24,6 +24,12 @@ const GridView = ({ categories, price, isOpen }) => {
     },
   );
 
+  // reset Load More button
+  // when category or price are changed
+  useEffect(() => {
+    setHasMoreResults(true);
+  }, [categories, price]);
+
   if (error) return (<APIError error={error} />);
 
   const initData = {
@@ -48,10 +54,12 @@ const GridView = ({ categories, price, isOpen }) => {
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         // update state by merging search results
-        if (!fetchMoreResult) {
+        if (fetchMoreResult && !fetchMoreResult.search.business.length) {
+          // toggle Load More button
           setHasMoreResults(false);
           return prev;
         }
+
         return Object.assign({}, prev, {
           search: {
             __typename: 'Businesses',
@@ -68,9 +76,10 @@ const GridView = ({ categories, price, isOpen }) => {
           const category = item.categories[0].title;
           return (<GridItem key={item.id} { ...item } category={category} isOpen={!item.is_closed} />);
         })}
-        {!loading && items.length === 0 && <div className='no-results'>
+
+        {!loading && items.length === 0 && <li className='no-results'>
           No restaurants could be found matching your criteria.
-        </div>}
+        </li>}
       </Grid>
 
       {loading && <Loading />}
@@ -82,6 +91,11 @@ const GridView = ({ categories, price, isOpen }) => {
         .load-more {
           display: flex;
           justify-content: center;
+        }
+
+        // span the width of the grid
+        .no-results {
+          grid-area: 1 / 1 / 1 / 4;
         }
       `}</style>
     </div>

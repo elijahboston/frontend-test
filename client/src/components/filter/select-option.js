@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import Check from '../svg/check.svg';
 import { ThemeContext } from '../../contexts';
 
 const SelectOption = ({ title, alias, isSelected, toggleOption }) => {
@@ -13,10 +12,15 @@ const SelectOption = ({ title, alias, isSelected, toggleOption }) => {
   return (
     <li onClick={() => onClick()}>
       <div className='checkmark'>
-        {isSelected && <Check />}
+        {isSelected && <i className='icon icon-check'></i>}
       </div>
       <span>{title}</span>
       <style jsx>{`
+        .icon {
+          font-size: 1rem;
+          color: white;
+        }
+
         li {
           font-size: .9rem;
           display: flex;
@@ -34,7 +38,7 @@ const SelectOption = ({ title, alias, isSelected, toggleOption }) => {
           height: 1rem;
           display: flex;
           border-radius: 20rem;
-          background: #fff;
+          background: ${isSelected ? 'black' : 'white' };
           border: 1px solid ${isSelected ? 'transparent' : theme.borderLight};
           margin-right: .5rem;
         }
