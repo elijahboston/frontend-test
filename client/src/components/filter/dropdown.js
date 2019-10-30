@@ -21,7 +21,12 @@ const Dropdown = ({ options, selectedOptions, toggleOption }) => {
           top: .5rem;
           max-height: 20rem;
           display: flex;
-          overflow: scroll;
+          
+          // Prevent scrollbars from displaying while the
+          // dropdown expands, if the dropdown menu is short
+          overflow-y: ${options.length > 4 ? 'auto' : 'hidden'};
+
+          overflow-x: hidden;
           width: 100%;
           flex-direction: column;
           list-style-type: none;
