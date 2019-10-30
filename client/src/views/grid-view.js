@@ -68,9 +68,10 @@ const GridView = ({ categories, price, isOpen }) => {
           const category = item.categories[0].title;
           return (<GridItem key={item.id} { ...item } category={category} isOpen={!item.is_closed} />);
         })}
-        {!loading && items.length === 0 && <div className='no-results'>
+
+        {!loading && items.length === 0 && <li className='no-results'>
           No restaurants could be found matching your criteria.
-        </div>}
+        </li>}
       </Grid>
 
       {loading && <Loading />}
@@ -82,6 +83,11 @@ const GridView = ({ categories, price, isOpen }) => {
         .load-more {
           display: flex;
           justify-content: center;
+        }
+
+        // span the width of the grid
+        .no-results {
+          grid-area: 1 / 1 / 1 / 4;
         }
       `}</style>
     </div>
